@@ -1,0 +1,28 @@
+#nav-tab-container {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-top: 2px solid #EDEFED;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 999;
+}
+
+.tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 14px;
+    color: #999999;
+}
+
+.tab-item.tab-active {
+    color: #000000;
+}
