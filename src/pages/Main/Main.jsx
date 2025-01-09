@@ -1,6 +1,8 @@
 import './Main.css';
 import MainCard from '../../components/Card/MainCard';
+import { useNavigate } from 'react-router-dom';
 const Main = () => {
+    const navigate = useNavigate();
     return (
         <div className="main-container">
             <div className="profile-card">
@@ -9,7 +11,9 @@ const Main = () => {
                         <ion-icon name="person"></ion-icon>
                     </div>
                     <span className='profile-name'>이현호님</span>
-                    <div className="chevron-forward-container">
+                    <div 
+                        className="chevron-forward-container"
+                        onClick={() => navigate('/mypage')}>
                         <ion-icon name="chevron-forward"></ion-icon>
                     </div>
                 </div>

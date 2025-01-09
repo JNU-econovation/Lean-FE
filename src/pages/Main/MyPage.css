@@ -1,0 +1,76 @@
+.profile-info {
+    background-color: #e1fae6;
+    position: relative;
+}
+
+.rental-info {
+    background-color: var(--card-background-gray);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    flex: 1
+}
+
+.profile-edit {
+    margin-top: 10px;
+    background-color: #80b88f;
+}
+
+#profile-icon {
+    position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        background-color: #80b88f;
+        border-radius: 50%; 
+}
+
+#name {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 30px;
+    letter-spacing: -0.05em;
+}
+#department,
+#phone-number,
+#profile-edit {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+#profile-edit {
+    color: white;
+    font-weight: 600;
+}
+#rental-info {
+    width: 100%;
+    text-align: start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 800;
+    font-size: 18px;
+}
+#text-container {
+    display: flex;
+}
+#rental-info-container h5 {
+    letter-spacing: -0.02em;
+    margin: 3px;
+    color: var(--sub-text-gray)
+}
+#date {
+    text-align: start;
+}
+#item {
+    flex: 1;
+    text-align: center;
+}
+#rental-date {
+    text-align: end;
+}
+
+hr {
+    border: 0.5px solid #ccc;
+}

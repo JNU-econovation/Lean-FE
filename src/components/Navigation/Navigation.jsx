@@ -20,7 +20,7 @@ const Navigation = ({ title, onBackClick }) => {
 };
 
 Navigation.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     onBackClick: PropTypes.func,
 };
 
