@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import Navigation from '../../components/Navigation/Navigation';
+import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
@@ -37,7 +37,7 @@ const SignupProfileStep = ({ onNext, onBack }) => {
 
     return (
         <>
-            <Navigation title="학사인증" onBackClick={onBack} />
+            <Navbar title="학사인증" onBackClick={onBack} />
             <div id="info-container">
                 <p id="info-text">서비스를 위해</p>
                 <div id="info-container-flex">

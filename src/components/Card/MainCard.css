@@ -3,6 +3,7 @@
     overflow: hidden;
     z-index: 1;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
 
 .main-card:hover,
@@ -18,9 +19,11 @@
     margin-right: 10px;
     margin-bottom: 30px;
     overflow: hidden; 
+    cursor: pointer;
 }
 .card-image ion-icon {
     font-size: 40px;
+    cursor: pointer;
 }
 
 #icon-overlay ion-icon {
@@ -34,6 +37,7 @@
     justify-content: center;
     align-items: center;
     transform: rotate(-5deg);
+    cursor: pointer;
 }
 
 #title,
@@ -42,6 +46,7 @@
     text-align: start;
     z-index: 3;
     letter-spacing: -0.05em;
+    cursor: pointer;
 }
 #title {
     margin: 0;

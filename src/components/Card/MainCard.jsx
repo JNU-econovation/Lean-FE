@@ -8,9 +8,10 @@ const MainCard = ({
     icon, 
     iconColor, 
     iconBackgroundColor,
-    iconOverlayColor }) => {
+    iconOverlayColor,
+    onClick }) => {
     return (
-        <div className="card main-card" style={{ backgroundColor: backgroundColor }}>
+        <div className="card main-card" onClick={onClick} style={{ backgroundColor: backgroundColor }}>
             <div 
                 className="circle card-image"
                 style={{ backgroundColor: iconBackgroundColor}} >
@@ -38,7 +39,8 @@ MainCard.propTypes = {
     icon: PropTypes.string.isRequired,
     iconColor: PropTypes.string.isRequired,
     iconBackgroundColor: PropTypes.string,
-    iconOverlayColor: PropTypes.string
+    iconOverlayColor: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 export default MainCard;

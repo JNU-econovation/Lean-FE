@@ -1,7 +1,7 @@
-import './Navigation.css';
+import './Navbar.css';
 import PropTypes from 'prop-types';
 
-const Navigation = ({ title, onBackClick }) => {
+const Navbar = ({ title, onBackClick }) => {
     const handleBackClick = (e) => {
         e.preventDefault();
         if (onBackClick) {
@@ -10,7 +10,7 @@ const Navigation = ({ title, onBackClick }) => {
     };
 
     return (
-        <nav id="navigation">
+        <nav id="navbar">
             <button id="back-button" onClick={handleBackClick}>
                 <ion-icon size="large" name="chevron-back-outline" style={{ cursor: 'pointer' }}></ion-icon>
             </button>
@@ -19,9 +19,9 @@ const Navigation = ({ title, onBackClick }) => {
     );
 };
 
-Navigation.propTypes = {
+Navbar.propTypes = {
     title: PropTypes.string,
     onBackClick: PropTypes.func,
 };
 
-export default Navigation;
+export default Navbar;

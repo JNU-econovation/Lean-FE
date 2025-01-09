@@ -1,6 +1,6 @@
 import './MyPage.css';
 import '../../styles/Style.css'
-import Navigation from '../../components/Navigation/Navigation';
+import Navbar from '../../components/Navbar/Navbar';
 
 const MyPage = () => {
     const tempRentalList = [
@@ -16,7 +16,7 @@ const MyPage = () => {
 
     return (
         <div className="page-container">
-            <Navigation onBackClick={() => window.history.back()} />
+            <Navbar onBackClick={() => window.history.back()} />
             <div className="card profile-info">
                 <div id="profile-icon"></div>
                 <h3 id='name'>이현호님</h3>

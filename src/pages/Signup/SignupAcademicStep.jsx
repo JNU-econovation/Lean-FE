@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import Navigation from '../../components/Navigation/Navigation';
+import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Dropdown from '../../components/Dropdown/SignupDropdown';
 import Button from '../../components/Button/Button';
@@ -45,7 +45,7 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
 
     return (
         <>
-            <Navigation title="학사인증" onBackClick={onBack} />
+            <Navbar title="학사인증" onBackClick={onBack} />
             <div id="info-container">
                 <p id="info-text">추후 인증을 위해</p>
                 <div id="info-container-flex">
