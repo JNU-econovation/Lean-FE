@@ -5,7 +5,15 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+.main-card:hover,
+.main-card:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
 .icon-overlay ion-icon {
     position: absolute;
     bottom: -15px;;
