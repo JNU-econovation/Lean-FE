@@ -65,7 +65,7 @@
     max-width: 350px;
 }
 
-ion-icon {
+.complete-container ion-icon {
     font-size: 6rem;
     margin-bottom: 1rem;
     color: var(--main-green);
