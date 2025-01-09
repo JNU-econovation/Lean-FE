@@ -10,11 +10,11 @@ const Navigation = ({ title, onBackClick }) => {
     };
 
     return (
-        <nav className="navigation">
-            <button className="back-button" onClick={handleBackClick}>
+        <nav id="navigation">
+            <button id="back-button" onClick={handleBackClick}>
                 <ion-icon size="large" name="chevron-back-outline" style={{ cursor: 'pointer' }}></ion-icon>
             </button>
-            <h2 className="nav-title">{title}</h2>
+            <h2 id="nav-title">{title}</h2>
         </nav>
     );
 };

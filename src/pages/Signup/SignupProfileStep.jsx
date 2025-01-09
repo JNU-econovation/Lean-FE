@@ -38,11 +38,11 @@ const SignupProfileStep = ({ onNext, onBack }) => {
     return (
         <>
             <Navigation title="학사인증" onBackClick={onBack} />
-            <div className="info-container">
-                <p className="info-text">서비스를 위해</p>
-                <div className="info-container-flex">
-                    <p className="info-text-green">기본정보</p>
-                    <p className="info-text">가 필요해요</p>
+            <div id="info-container">
+                <p id="info-text">서비스를 위해</p>
+                <div id="info-container-flex">
+                    <p id="info-text-green">기본정보</p>
+                    <p id="info-text">가 필요해요</p>
                 </div>
             </div>
             <form className="signup-form" onSubmit={handleSubmit} noValidate>

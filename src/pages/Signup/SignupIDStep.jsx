@@ -52,9 +52,9 @@ const SignupIDStep = ({ onNext, onBack }) => {
     return (
         <>
             <Navigation title="회원가입" onBackClick={onBack} />
-            <div className="info-container">
-                <p className="info-text">마지막으로</p>
-                <p className="info-text">회원가입을 진행해볼까요?</p>
+            <div id="info-container">
+                <p id="info-text">마지막으로</p>
+                <p id="info-text">회원가입을 진행해볼까요?</p>
             </div>
             <form className="signup-form" onSubmit={handleSubmit} noValidate>
                 <SigninInput

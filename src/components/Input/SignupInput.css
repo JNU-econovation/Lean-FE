@@ -1,4 +1,4 @@
-.signup-input-group {
+#signup-input-container {
     width: 100%;
     margin-bottom: 1rem;
     margin-top: 1.8rem;
@@ -8,7 +8,7 @@
     position: relative;
 }
 
-.signup-label {
+#signup-label {
     display: block;
     font-size: 1rem;
     font-weight: 600;
