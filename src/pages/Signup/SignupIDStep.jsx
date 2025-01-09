@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import Navigation from '../../components/Navigation/Navigation';
+import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
@@ -51,7 +51,7 @@ const SignupIDStep = ({ onNext, onBack }) => {
 
     return (
         <>
-            <Navigation title="회원가입" onBackClick={onBack} />
+            <Navbar title="회원가입" onBackClick={onBack} />
             <div id="info-container">
                 <p id="info-text">마지막으로</p>
                 <p id="info-text">회원가입을 진행해볼까요?</p>

@@ -2,7 +2,7 @@ import './MyPage.css';
 import '../../styles/Style.css'
 import Navbar from '../../components/Navbar/Navbar';
 
-const MyPage = () => {
+const RentalInfo = () => {
     const tempRentalList = [
         {   date : "2024년 1월 12일",
             item : "우산(대)",
@@ -16,7 +16,7 @@ const MyPage = () => {
 
     return (
         <div className="page-container">
-            <Navbar onBackClick={() => window.history.back()} />
+            <Navbar title="대여 정보 확인" onBackClick={() => window.history.back()} />
             <div className="card profile-info">
                 <div id="profile-icon"></div>
                 <h3 id='name'>이현호님</h3>
@@ -43,4 +43,4 @@ const MyPage = () => {
     );
 };
 
-export default MyPage;
+export default RentalInfo;
