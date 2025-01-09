@@ -1,0 +1,105 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.sub-container,
+.profile-name-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.profile-name-container {
+    align-items: center;
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.profile-text-container {
+    width: 100%;
+    background-color: white;
+    border-radius: 35px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    padding: 13px;
+}
+
+.profile-card,
+.rental-card,
+.confirm-card {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--card-background-gray);
+    border-radius: 30px;
+}
+
+.date-card {
+    width: 100%;
+    padding: 10px;
+    background-color: #6EBA8B;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+
+
+.rental-card {
+    margin-right: 5px;
+}
+
+.confirm-card {
+    margin-left: 5px;
+}
+
+.date-text {
+    width: 100%;
+    color: white;
+    font-weight: 600;
+    font-size: 24px;
+    margin-top:30px;
+}
+
+.until-text {
+    flex: 1;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+}
+
+.d-day-text {
+    color: white;
+    font-weight: 800;
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    line-height: 100%;
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.profile-image ion-icon {
+    font-size: 45px;
+    margin-top: 5px;
+    color: var(--sub-text-gray);    
+}
