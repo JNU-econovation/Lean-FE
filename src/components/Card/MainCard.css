@@ -1,7 +1,4 @@
 .main-card {
-    width: 100%;
-    padding: 10px;
-    border-radius: 30px;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -14,20 +11,7 @@
     transform: translateY(-5px);
 }
 
-.icon-overlay ion-icon {
-    position: absolute;
-    bottom: -15px;;
-    right: -15px;
-    width: 120px;
-    height: 120px;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(-5deg);
-}
 .card-image {
-    border-radius: 50%;
     width: 45px;
     height: 45px;
     background-color: white;
@@ -39,19 +23,32 @@
     font-size: 40px;
 }
 
-.text-title,
-.text-description {
+#icon-overlay ion-icon {
+    position: absolute;
+    bottom: -15px;;
+    right: -15px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-5deg);
+}
+
+#title,
+#description {
     position: relative;
     text-align: start;
     z-index: 3;
     letter-spacing: -0.05em;
 }
-.text-title {
+#title {
     margin: 0;
     font-size: 18px;
     font-weight: 800;
 }
-.text-description {
+#description {
     margin-top: 0;
     font-size: 14px;
 }

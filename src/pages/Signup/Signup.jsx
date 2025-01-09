@@ -56,7 +56,7 @@ const Signup = () => {
         }
     };
 
-    return <div className="signup-container">{renderCurrentStep()}</div>;
+    return <div className="page-container">{renderCurrentStep()}</div>;
 };
 
 export default Signup;

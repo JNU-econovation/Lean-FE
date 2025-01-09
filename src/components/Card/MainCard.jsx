@@ -10,17 +10,17 @@ const MainCard = ({
     iconBackgroundColor,
     iconOverlayColor }) => {
     return (
-        <div className="main-card" style={{ backgroundColor: backgroundColor }}>
+        <div className="card main-card" style={{ backgroundColor: backgroundColor }}>
             <div 
-                className="card-image"
+                className="circle card-image"
                 style={{ backgroundColor: iconBackgroundColor}} >
                 <ion-icon 
                     name={icon} 
                     style={{ color: iconColor }}></ion-icon>
             </div>
-            <p className='text-title' style={{ color: titleColor }}>{title}</p>
-            <p className='text-description' style={{ color: descriptionColor }}>{description}</p>
-            <div className="icon-overlay">
+            <p id='title' style={{ color: titleColor }}>{title}</p>
+            <p id='description' style={{ color: descriptionColor }}>{description}</p>
+            <div id="icon-overlay">
                 <ion-icon 
                     name={icon}
                     style={{ color: iconOverlayColor }}></ion-icon>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SigninInput = ({ type, name, placeholder, value, onChange, required = false }) => {
     return (
-        <div className="signin-input-group">
+        <div id="signin-input-container">
             <input 
                 type={type}
                 name={name}

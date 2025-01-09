@@ -13,3 +13,10 @@
     border-radius: 30px;
 }
 
+.circle {
+    border-radius: 50%;
+}
+
+.flex {
+    display: flex;
+}

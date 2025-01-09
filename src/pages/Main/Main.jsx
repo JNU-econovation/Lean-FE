@@ -4,29 +4,29 @@ import { useNavigate } from 'react-router-dom';
 const Main = () => {
     const navigate = useNavigate();
     return (
-        <div className="main-container">
-            <div className="profile-card">
-                <div className="profile-name-container">
-                    <div className="profile-image">
+        <div id="main-container">
+            <div id="profile-card">
+                <div id="profile-name-container">
+                    <div className="circle profile-image">
                         <ion-icon name="person"></ion-icon>
                     </div>
-                    <span className='profile-name'>이현호님</span>
+                    <span id='profile-name'>이현호님</span>
                     <div 
-                        className="chevron-forward-container"
+                        id="chevron-forward-container"
                         onClick={() => navigate('/mypage')}>
                         <ion-icon name="chevron-forward"></ion-icon>
                     </div>
                 </div>
-                <div className="profile-text-container">
+                <div id="profile-text-container">
                     <span>오늘 대운동장에서 피크닉 어때요?</span>
                 </div>
             </div>
-            <div className="date-card">
-                <p className="date-text">2024년 11월 27일</p>
-                <p className="until-text">반납기한까지</p>
-                <p className="d-day-text">1DAY 2H</p>
+            <div id="date-card">
+                <p id="date-text">2024년 11월 27일</p>
+                <p id="until-text">반납기한까지</p>
+                <p id="d-day-text">1DAY 2H</p>
             </div>
-            <div className="sub-container">
+            <div id="sub-container">
                 <MainCard 
                     title="물품 대여"
                     description='물품을 대여할 수 있어요'

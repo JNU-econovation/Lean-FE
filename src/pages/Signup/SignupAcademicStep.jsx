@@ -46,11 +46,11 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
     return (
         <>
             <Navigation title="학사인증" onBackClick={onBack} />
-            <div className="info-container">
-                <p className="info-text">추후 인증을 위해</p>
-                <div className="info-container-flex">
-                    <p className="info-text-green">학사정보</p>
-                    <p className="info-text">가 필요해요</p>
+            <div id="info-container">
+                <p id="info-text">추후 인증을 위해</p>
+                <div id="info-container-flex">
+                    <p id="info-text-green">학사정보</p>
+                    <p id="info-text">가 필요해요</p>
                 </div>
             </div>
             <form className="signup-form" onSubmit={handleSubmit} noValidate>
