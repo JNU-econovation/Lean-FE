@@ -1,0 +1,28 @@
+.navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3.5rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    padding-top: 1.5rem;
+    z-index: 1000;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.nav-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+} 

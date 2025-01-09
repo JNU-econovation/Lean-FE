@@ -1,0 +1,23 @@
+.button {
+    width: 100%;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 18px 0;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.button:not(.disabled) {
+    background-color: var(--main-green);
+}
+
+.button.disabled {
+    background-color: #EDEEED;
+    color: #BDBDBD;
+}
+
+.login-button {
+    margin-top: 5px;
+} 
