@@ -1,0 +1,72 @@
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding-top: 100px;
+    position: relative;
+}
+
+.signup-form {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 8px;
+}
+
+.info-container {
+    width: 100%;
+    max-width: 350px;
+    text-align: left;
+}
+
+.info-container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.info-text,
+.info-text-green {
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: -0.1em;
+}
+
+.info-text-green {
+    color: var(--main-green);
+}
+
+.info-text-gray {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -0.05em;
+    color: #c0c0c0;
+}
+
+.complete-container {
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+.signup-button {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2.5rem);
+    max-width: 350px;
+}
+
+ion-icon {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: var(--main-green);
+}
