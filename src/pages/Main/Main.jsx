@@ -57,7 +57,8 @@ const Main = () => {
                 icon='library'
                 iconColor='#727c74'
                 iconBackgroundColor='#9DB0A3'
-                iconOverlayColor='#9DB0A3'/>
+                iconOverlayColor='#9DB0A3'
+                onClick={() => navigate('/rent/info')}/>
                 
         </div>
     );
