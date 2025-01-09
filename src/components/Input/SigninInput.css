@@ -1,0 +1,26 @@
+.signin-input-group {
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid #cacaca;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.input-field::placeholder {
+    color: var(--placeholder-gray);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--main-green);
+    box-shadow: 0 0 0 1px var(--main-green);
+} 
