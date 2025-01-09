@@ -8,7 +8,10 @@ const Main = () => {
                     <div className="profile-image">
                         <ion-icon name="person"></ion-icon>
                     </div>
-                    <span>이현호님</span>
+                    <span className='profile-name'>이현호님</span>
+                    <div className="chevron-forward-container">
+                        <ion-icon name="chevron-forward"></ion-icon>
+                    </div>
                 </div>
                 <div className="profile-text-container">
                     <span>오늘 대운동장에서 피크닉 어때요?</span>
