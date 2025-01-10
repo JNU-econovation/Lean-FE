@@ -1,4 +1,4 @@
-.signup-dropdown-group {
+.signupDropdownGroup {
     width: 100%;
     margin-bottom: 1rem;
     margin-top: 1.8rem;
@@ -34,7 +34,7 @@
     transition: background 0.3s;
 }
 
-.select-clicked {
+.selectClicked {
     border: 2px #E0E0E0 solid;
     box-shadow: 0 0 0.5em #E0E0E0;
 }
@@ -52,7 +52,7 @@
     transition: 0.3s;
 }
 
-.caret-rotate {
+.caretRotate {
     transform: rotate(180deg);
 }
 
@@ -91,7 +91,7 @@
     background: #f2f2f2;
 }
 
-.menu-open {
+.menuOpen {
     display: block;
     opacity: 1;
 }

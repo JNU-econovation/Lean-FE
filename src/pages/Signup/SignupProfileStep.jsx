@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
-import './Signup.css';
+import style from './Signup.module.css';
 
 const SignupProfileStep = ({ onNext, onBack }) => {
     const [username, setUsername] = useState('');
@@ -38,14 +38,14 @@ const SignupProfileStep = ({ onNext, onBack }) => {
     return (
         <>
             <Navbar title="학사인증" onBackClick={onBack} />
-            <div id="info-container">
-                <p id="info-text">서비스를 위해</p>
-                <div id="info-container-flex">
-                    <p id="info-text-green">기본정보</p>
-                    <p id="info-text">가 필요해요</p>
+            <div className={style.infoBox}>
+                <p className={style.infoText}>서비스를 위해</p>
+                <div>
+                    <p className={`${style.infoText} ${style.green}`}>기본정보</p>
+                    <p className={style.infoText}>가 필요해요</p>
                 </div>
             </div>
-            <form className="signup-form" onSubmit={handleSubmit} noValidate>
+            <form className={style.signupForm} onSubmit={handleSubmit} noValidate>
                 <SigninInput
                     type="text"
                     id="username"
@@ -62,7 +62,7 @@ const SignupProfileStep = ({ onNext, onBack }) => {
                     value={phone}
                     onChange={handlePhoneChange}
                 />
-                <Button text="다음" type="submit" className={`signup-button ${isButtonDisabled ? 'disabled' : ''}`} disabled={isButtonDisabled} />
+                <Button text="다음" type="submit" className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} />
             </form>
         </>
     );

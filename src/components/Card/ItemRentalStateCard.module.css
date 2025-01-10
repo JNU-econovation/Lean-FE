@@ -1,24 +1,30 @@
-.rental-state-card {
+.rentalStateCard {
     border: 1px solid #F1F1F1;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
     font-family: 'Arial', sans-serif;
     margin-bottom: 10px;
 }
+.rentalStateCard:hover,
+.rentalStateCard:active {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
 
-#head-container {
+.headBox {
     display: flex;
     justify-content: space-between;
     padding: 5px;
 }
 
-#student-council {
+.headBox span {
     font-size: 18px;
     font-weight: 600;
 }
 
-#rental-state {
+.rentalState {
     background-color: #FC8183;
     padding-left: 15px;
     padding-right: 15px;
@@ -28,36 +34,35 @@
     border-radius: 30px;
 }
 
-#body-container {
+.bodyBox {
     display: flex;
     align-items: center;
 }
 
-.item-icon {
+.itemIcon {
     background-color: #d9d9d9;
     width: 80px;
     height: 80px;
-
 }
 
-#text-container {
+.textBox {
     flex-direction: column;
     flex: 1;
 }
 
-#item-name,
-#item-rental-status,
-#item-description {
+.itemName,
+.rentalStatus,
+.description {
     font-size: 14px;
     font-weight: 600;
     margin: 4px;
 }
 
-#item-rental-status {
+.rentalStatus {
     color:#FF0000;
 }
 
-#item-description {
+.description {
     font-weight: 400;
     color: var(--sub-text-gray)
 }

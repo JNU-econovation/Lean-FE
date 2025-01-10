@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import './SignupDropdown.css';
+import style from './SignupDropdown.module.css';
 
 const SignupDropdown = ({ label, list = [], onSelect, selected }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,20 +19,20 @@ const SignupDropdown = ({ label, list = [], onSelect, selected }) => {
     };
 
     return (
-        <div className={`signup-dropdown-group`}>
-            <label className="signup-label">{label}</label>
-            <div className="dropdown">
-                <div className={`select ${isOpen ? 'select-clicked' : ''}`} onClick={toggleDropdown}>
-                    <span className="selected">
+        <div className={style.signupDropdownGroup}>
+            <label className='signupLabel'>{label}</label>
+            <div className={style.dropdown}>
+                <div className={`${style.select} ${isOpen ? style.selectClicked : ''}`} onClick={toggleDropdown}>
+                    <span className={style.selected}>
                         {selected || '단과대학 선택'}
                     </span>
-                    <div className={`caret ${isOpen ? 'caret-rotate' : ''}`}></div>
+                    <div className={`${style.caret} ${isOpen ? style.caretRotate : ''}`}></div>
                 </div>
-                <ul className={`menu ${isOpen ? 'menu-open' : ''}`}>
+                <ul className={`${style.menu} ${isOpen ? style.menuOpen : ''}`}>
                     {list.map((item, index) => (
                         <li
                             key={index}
-                            className={activeIndex === index ? 'active' : ''}
+                            className={activeIndex === index ? style.active : ''}
                             onClick={() => handleItemClick(index)}
                         >
                             {item}

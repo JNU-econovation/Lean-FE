@@ -1,15 +1,15 @@
-#main-container {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    position: relative;
     padding-top: 50px;
     padding-bottom: 50px;
-    position: relative;
 }
 
-#sub-container,
-#profile-name-container{
+.itemCardBox,
+.profileCardBox{
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -17,7 +17,7 @@
     margin-bottom: 10px;
 }
 
-#profile-name-container {
+.profileCardBox {
     align-items: center;
     justify-content: space-between;
     font-size: 20px;
@@ -26,12 +26,12 @@
     margin-bottom: 20px;
 }
 
-#profile-name {
+.profileCardBox span {
     flex: 1;
     text-align: start;
 }
 
-#profile-text-container {
+.profileTextBox {
     width: 100%;
     background-color: white;
     border-radius: 35px;
@@ -41,16 +41,39 @@
     padding: 13px;
 }
 
-#profile-card,
-#rental-card,
-#confirm-card {
+.profileImage {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    margin-right: 10px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.profileImage ion-icon {
+    font-size: 45px;
+    margin-top: 5px;
+    color: var(--sub-text-gray);    
+}
+
+.backButtonBox ion-icon {
+    font-size: 30px;
+    right: 0;
+    color: var(--sub-text-gray);  
+    cursor: pointer;
+}
+
+.profileCard,
+.rentalCard,
+.confirmCard {
     width: 100%;
     padding: 10px;
     background-color: var(--card-background-gray);
     border-radius: 30px;
 }
 
-#date-card {
+.dateCard {
     width: 100%;
     padding: 10px;
     background-color: #6EBA8B;
@@ -61,15 +84,15 @@
 
 
 
-#rental-card {
+.rentalCard {
     margin-right: 5px;
 }
 
-#confirm-card {
+.confirmCard {
     margin-left: 5px;
 }
 
-#date-text {
+.dateText {
     width: 100%;
     color: white;
     font-weight: 600;
@@ -77,7 +100,7 @@
     margin-top:30px;
 }
 
-#until-text {
+.untilText {
     flex: 1;
     color: white;
     font-weight: 500;
@@ -85,7 +108,7 @@
     margin: 0;
 }
 
-#d-day-text {
+.dDayText {
     color: white;
     font-weight: 800;
     font-size: 50px;
@@ -94,25 +117,3 @@
     line-height: 100%;
 }
 
-.profile-image {
-    width: 45px;
-    height: 45px;
-    background-color: white;
-    margin-right: 10px;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; 
-}
-
-.profile-image ion-icon {
-    font-size: 45px;
-    margin-top: 5px;
-    color: var(--sub-text-gray);    
-}
-
-#chevron-forward-container ion-icon {
-    font-size: 30px;
-    right: 0;
-    color: var(--sub-text-gray);  
-    cursor: pointer;
-}

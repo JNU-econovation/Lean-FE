@@ -3,6 +3,7 @@ import ProfileStep from './SignupProfileStep';
 import AcademicStep from './SignupAcademicStep';
 import IDStep from './SignupIDStep';
 import CompleteStep from './SignupCompleteStep';
+import style from './Signup.module.css';
 
 const Signup = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -56,7 +57,7 @@ const Signup = () => {
         }
     };
 
-    return <div className="page-container">{renderCurrentStep()}</div>;
+    return <div className={`pageContainer ${style.signupContainer}`}>{renderCurrentStep()}</div>;
 };
 
 export default Signup;

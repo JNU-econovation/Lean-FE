@@ -1,4 +1,4 @@
-import './MainCard.css';
+import style from './MainCard.module.css';
 import PropTypes from 'prop-types';
 
 const MainCard = ({ 
@@ -11,17 +11,17 @@ const MainCard = ({
     iconOverlayColor,
     onClick }) => {
     return (
-        <div className="card main-card" onClick={onClick} style={{ backgroundColor: backgroundColor }}>
+        <div className={`card ${style.mainCard}`} onClick={onClick} style={{ backgroundColor: backgroundColor }}>
             <div 
-                className="circle card-image"
+                className={`circle ${style.cardImage}`}
                 style={{ backgroundColor: iconBackgroundColor}} >
                 <ion-icon 
                     name={icon} 
                     style={{ color: iconColor }}></ion-icon>
             </div>
-            <p id='title' style={{ color: titleColor }}>{title}</p>
-            <p id='description' style={{ color: descriptionColor }}>{description}</p>
-            <div id="icon-overlay">
+            <p className={style.title} style={{ color: titleColor }}>{title}</p>
+            <p className={style.description} style={{ color: descriptionColor }}>{description}</p>
+            <div className={style.iconOverlay}>
                 <ion-icon 
                     name={icon}
                     style={{ color: iconOverlayColor }}></ion-icon>

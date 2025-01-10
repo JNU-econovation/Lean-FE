@@ -4,7 +4,7 @@ import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
 import { isValidPassword, doPasswordsMatch, showError } from '../../hooks/useSignupValidation';
-import './Signup.css';
+import style from './Signup.module.css';
 
 const SignupIDStep = ({ onNext, onBack }) => {
     const [password, setPassword] = useState('');
@@ -52,11 +52,11 @@ const SignupIDStep = ({ onNext, onBack }) => {
     return (
         <>
             <Navbar title="회원가입" onBackClick={onBack} />
-            <div id="info-container">
-                <p id="info-text">마지막으로</p>
-                <p id="info-text">회원가입을 진행해볼까요?</p>
+            <div className={style.infoBox}>
+                <p className={style.infoText}>마지막으로</p>
+                <p className={style.infoText}>회원가입을 진행해볼까요?</p>
             </div>
-            <form className="signup-form" onSubmit={handleSubmit} noValidate>
+            <form className={style.signupForm} onSubmit={handleSubmit} noValidate>
                 <SigninInput
                     type="password"
                     id="password"
@@ -76,7 +76,7 @@ const SignupIDStep = ({ onNext, onBack }) => {
                 <Button
                     text="회원가입"
                     type="submit"
-                    className={`signup-button ${isButtonDisabled ? 'disabled' : ''}`}
+                    className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`}
                     disabled={isButtonDisabled}
                 />
             </form>

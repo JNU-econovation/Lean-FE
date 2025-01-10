@@ -1,4 +1,4 @@
-#navbar {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,14 +11,14 @@
     z-index: 1000;
 }
 
-#back-button {
+.backButton {
     background: none;
     border: none;
     padding: 1rem;
     cursor: pointer;
 }
 
-#nav-title {
+.navbar h2 {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);

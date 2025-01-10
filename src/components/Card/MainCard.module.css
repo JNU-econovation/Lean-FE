@@ -1,4 +1,4 @@
-.main-card {
+.mainCard {
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -6,13 +6,13 @@
     cursor: pointer;
 }
 
-.main-card:hover,
-.main-card:active {
+.mainCard:hover,
+.mainCard:active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
 }
 
-.card-image {
+.cardImage {
     width: 45px;
     height: 45px;
     background-color: white;
@@ -21,12 +21,12 @@
     overflow: hidden; 
     cursor: pointer;
 }
-.card-image ion-icon {
+.cardImage ion-icon {
     font-size: 40px;
     cursor: pointer;
 }
 
-#icon-overlay ion-icon {
+.iconOverlay ion-icon {
     position: absolute;
     bottom: -15px;;
     right: -15px;
@@ -40,20 +40,20 @@
     cursor: pointer;
 }
 
-#title,
-#description {
+.title,
+.description {
     position: relative;
     text-align: start;
     z-index: 3;
     letter-spacing: -0.05em;
     cursor: pointer;
 }
-#title {
+.title {
     margin: 0;
     font-size: 18px;
     font-weight: 800;
 }
-#description {
+.description {
     margin-top: 0;
     font-size: 14px;
 }
