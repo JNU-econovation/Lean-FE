@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    align-items: start;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding-top: 15px;
+}
+
+.itemIcon {
+    background-color: #d9d9d9;
+    width: 100px;
+    height: 100px;
+}
+
+.textBox {
+    margin-left: 35px;
+    text-align: start;
+}
+
+.studentCouncil{
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--sub-text-gray);
+    margin: 0px;
+}
+
+.itemName{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
