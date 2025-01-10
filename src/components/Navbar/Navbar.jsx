@@ -1,4 +1,4 @@
-import './Navbar.css';
+import style from './Navbar.module.css';
 import PropTypes from 'prop-types';
 
 const Navbar = ({ title, onBackClick }) => {
@@ -10,11 +10,11 @@ const Navbar = ({ title, onBackClick }) => {
     };
 
     return (
-        <nav id="navbar">
-            <button id="back-button" onClick={handleBackClick}>
+        <nav className={style.navbar}>
+            <button className={style.backButton} onClick={handleBackClick}>
                 <ion-icon size="large" name="chevron-back-outline" style={{ cursor: 'pointer' }}></ion-icon>
             </button>
-            <h2 id="nav-title">{title}</h2>
+            <h2>{title}</h2>
         </nav>
     );
 };

@@ -1,32 +1,32 @@
-import './Main.css';
+import style from './Main.module.css';
 import MainCard from '../../components/Card/MainCard';
 import { useNavigate } from 'react-router-dom';
 const Main = () => {
     const navigate = useNavigate();
     return (
-        <div id="main-container">
-            <div id="profile-card">
-                <div id="profile-name-container">
-                    <div className="circle profile-image">
+        <div className={style.container}>
+            <div className={style.profileCard}>
+                <div className={style.profileCardBox}>
+                    <div className={`circle ${style.profileImage}`}>
                         <ion-icon name="person"></ion-icon>
                     </div>
-                    <span id='profile-name'>이현호님</span>
+                    <span>이현호님</span>
                     <div 
-                        id="chevron-forward-container"
+                        className={style.backButtonBox}
                         onClick={() => navigate('/mypage')}>
                         <ion-icon name="chevron-forward"></ion-icon>
                     </div>
                 </div>
-                <div id="profile-text-container">
+                <div className={style.profileTextBox}>
                     <span>오늘 대운동장에서 피크닉 어때요?</span>
                 </div>
             </div>
-            <div id="date-card">
-                <p id="date-text">2024년 11월 27일</p>
-                <p id="until-text">반납기한까지</p>
-                <p id="d-day-text">1DAY 2H</p>
+            <div className={style.dateCard}>
+                <p className={style.dateText}>2024년 11월 27일</p>
+                <p className={style.untilText}>반납기한까지</p>
+                <p className={style.dDayText}>1DAY 2H</p>
             </div>
-            <div id="sub-container">
+            <div className={style.itemCardBox}>
                 <MainCard 
                     title="물품 대여"
                     description='물품을 대여할 수 있어요'

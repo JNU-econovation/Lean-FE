@@ -1,5 +1,4 @@
-import './MyPage.css';
-import '../../styles/Style.css'
+import style from './MyPage.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 
 const MyPage = () => {
@@ -15,25 +14,25 @@ const MyPage = () => {
             rental_date : "2"}]
 
     return (
-        <div className="page-container">
+        <div className={`pageContainer ${style.container}`}>
             <Navbar onBackClick={() => window.history.back()} />
-            <div className="card profile-info">
-                <div id="profile-icon"></div>
-                <h3 id='name'>이현호님</h3>
-                <h5 id='department'>치의학대학원</h5>
-                <h5 id='phone-number'>010-7160-8490</h5>
-                <div className="profile-edit card">
-                    <p id="profile-edit">프로필 수정</p>
+            <div className={`card ${style.profileInfo}`}>
+                <div className={style.profileIcon}></div>
+                <h3 className={style.name}>이현호님</h3>
+                <h5 className={style.department}>치의학대학원</h5>
+                <h5 className={style.phoneNumber}>010-7160-8490</h5>
+                <div className={`${style.profileEdit} card`}>
+                    <p>프로필 수정</p>
                 </div>
             </div>
-            <div className="card rental-info">
-                <h3 id='rental-info'>대여 정보</h3>
+            <div className={`card ${style.rentalInfo}`}>
+                <h3 className={style.rentalInfo}>대여 정보</h3>
                 {tempRentalList.map((rental, index) => (
-                    <div key={index} id="rental-info-container">
-                        <div id="text-container">
-                            <h5 id='date'>{rental.date}</h5>
-                            <h5 id='item'>{rental.item}</h5>
-                            <h5 id='rental-date'>{rental.rental_date}일간 대여</h5>
+                    <div key={index} className={style.rentalInfoBox}>
+                        <div className={style.textBox}>
+                            <h5 className={style.date}>{rental.date}</h5>
+                            <h5 className={style.item}>{rental.item}</h5>
+                            <h5 className={style.rentalDate}>{rental.rental_date}일간 대여</h5>
                         </div>
                         {index < tempRentalList.length - 1 && <hr />}
                     </div>

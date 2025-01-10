@@ -1,15 +1,15 @@
-import './SignupInput.css';
+import style from './SignupInput.module.css';
 import PropTypes from 'prop-types';
 
 const SignupInput = ({ type, id, value, label, placeholder = '', onChange }) => {
     return (
-        <div id="signup-input-container">
-            <label htmlFor={id} id="signup-label">{label}</label>
+        <div className={style.container}>
+            <label htmlFor={id} className='signupLabel'>{label}</label>
             <input 
                 type={type}
                 id={id}
                 value={value}
-                className="signup-input-field"
+                className={style.signupInputField}
                 placeholder={placeholder}
                 onChange={onChange}
             />

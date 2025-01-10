@@ -4,7 +4,7 @@ import SigninInput from '../../components/Input/SignupInput';
 import Dropdown from '../../components/Dropdown/SignupDropdown';
 import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
-import './Signup.css';
+import style from './Signup.module.css';
 
 const SignupAcademicStep = ({ onNext, onBack }) => {
     const [college, setCollege] = useState('');
@@ -46,14 +46,14 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
     return (
         <>
             <Navbar title="학사인증" onBackClick={onBack} />
-            <div id="info-container">
-                <p id="info-text">추후 인증을 위해</p>
-                <div id="info-container-flex">
-                    <p id="info-text-green">학사정보</p>
-                    <p id="info-text">가 필요해요</p>
+            <div className={style.infoBox}>
+                <p className={style.infoText}>추후 인증을 위해</p>
+                <div>
+                    <p className={`${style.infoText} ${style.green}`}>학사정보</p>
+                    <p className={style.infoText}>가 필요해요</p>
                 </div>
             </div>
-            <form className="signup-form" onSubmit={handleSubmit} noValidate>
+            <form className={style.signupForm} onSubmit={handleSubmit} noValidate>
                 <Dropdown
                     label="단과대학"
                     list={['공과대학', '인문대학', '사회대학', "AI융합대학", "교육대학"]}
@@ -79,7 +79,7 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
                 <Button
                     text="다음"
                     type="submit"
-                    className={`signup-button ${isButtonDisabled ? 'disabled' : ''}`} disabled={isButtonDisabled} 
+                    className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} 
                 />
             </form>
         </>

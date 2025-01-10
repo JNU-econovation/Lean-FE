@@ -1,24 +1,25 @@
-import './ItemRentalStateCard.css';
+import style from './ItemRentalStateCard.module.css';
+import Badge from '../Badge/RentalStatusBadge';
 import PropTypes from 'prop-types';
 
-const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate}) => {
+const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate, onClick}) => {
     return (
-        <div className="card rental-state-card">
-            <div id="head-container">
-                <span id="student-council">{studentCouncil}</span>
-                <div id="rental-state" style={{backgroundColor: '#ec8886'}}>{rentalStatus}</div>
+        <div className={`card ${style.rentalStateCard}`} onClick={onClick}>
+            <div className={style.headBox}>
+                <span>{studentCouncil}</span>
+                <Badge rentalStatus={rentalStatus} backgroundColor={'#ec8886'}/>
             </div>
-            <div id="body-container">
-                <div className="circle item-icon">
+            <div className={style.bodyBox}>
+                <div className={`circle ${style.itemIcon}`}>
 
                 </div>
-                <div id="text-container">
-                    <p id="item-name">{item}</p>
-                    <p id="item-description">물품</p>
+                <div className={style.textBox}>
+                    <p className={style.itemName}>{item}</p>
+                    <p className={style.description}>물품</p>
                 </div>
-                <div id="text-container">
-                    <p id="item-rental-status">{expirationDate}</p>
-                    <p id="item-description">반납기한</p>
+                <div className={style.textBox}>
+                    <p className={style.rentalStatus}>{expirationDate}</p>
+                    <p className={style.description}>반납기한</p>
                 </div>
             </div>
         </div>
@@ -30,6 +31,7 @@ ItemRentalStateCard.propTypes = {
     item: PropTypes.string.isRequired,
     rentalStatus: PropTypes.string.isRequired,
     expirationDate : PropTypes.string.isRequired,
+    onClick : PropTypes.func,
 };
 
 export default ItemRentalStateCard;

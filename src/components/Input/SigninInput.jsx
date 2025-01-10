@@ -1,9 +1,9 @@
-import './SigninInput.css';
+import style from './SigninInput.module.css';
 import PropTypes from 'prop-types';
 
 const SigninInput = ({ type, name, placeholder, value, onChange, required = false }) => {
     return (
-        <div id="signin-input-container">
+        <div className={style.container}>
             <input 
                 type={type}
                 name={name}
@@ -11,7 +11,7 @@ const SigninInput = ({ type, name, placeholder, value, onChange, required = fals
                 value={value}
                 onChange={onChange}
                 required={required}
-                className="input-field"
+                className={style.inputField}
             />
         </div>
     );

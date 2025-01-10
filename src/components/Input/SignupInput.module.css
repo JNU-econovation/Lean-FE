@@ -1,4 +1,4 @@
-#signup-input-container {
+.container {
     width: 100%;
     margin-bottom: 1rem;
     margin-top: 1.8rem;
@@ -8,7 +8,7 @@
     position: relative;
 }
 
-#signup-label {
+.signupLabel {
     display: block;
     font-size: 1rem;
     font-weight: 600;
@@ -17,7 +17,7 @@
     transition: color 0.3s ease;
 }
 
-.signup-input-field {
+.signupInputField {
     width: 100%;
     padding: 0.5rem 0;
     font-size: 1rem;
@@ -27,12 +27,12 @@
     transition: border-color 0.3s ease;
 }
 
-.signup-input-field::placeholder {
+.signupInputField::placeholder {
     color: var(--placeholder-gray);
     font-size: 1.2rem;
 }
 
-.signup-input-field:focus {
+.signupInputField:focus {
     outline: none;
     border-bottom: 2px solid var(--main-green);
 }

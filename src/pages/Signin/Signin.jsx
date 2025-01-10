@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/SigninInput';
-import './Signin.css';
+import style from './Signin.module.css';
 
 const Signin = () => {
     const navigate = useNavigate();
@@ -56,10 +56,10 @@ const Signin = () => {
     };
 
     return (
-        <div className="signin-container">
-            <span id="service-name">전남대학교 물품 대여 서비스</span>
-            <a href="/signin" id="lean-name">LEAN</a>
-            <form id="signinForm" className="signin-form" onSubmit={handleSubmit} noValidate>
+        <div className={style.container}>
+            <span className={style.serviceName}>전남대학교 물품 대여 서비스</span>
+            <a href="/signin" className={style.lean}>LEAN</a>
+            <form className={style.signinForm} id="signin-form" onSubmit={handleSubmit} noValidate>
                 <Input
                     type="text"
                     name="username"
@@ -76,14 +76,14 @@ const Signin = () => {
                     onChange={handleChange}
                     required
                 />
-                <div className="error-message-container">
-                    {signinError ? <p className="signin-error">{getErrorMessage()}</p> : ''}
+                <div className={style.errorMessage}>
+                    {signinError ? <p className={style.errorMessage}>{getErrorMessage()}</p> : ''}
                 </div>
-                <Button text="로그인" type="submit" className="signin-button" />
+                <Button text="로그인" type="submit" className={style.signinButton} />
             </form>
-            <div className="signup-link">
+            <div className={style.signupLink}>
                 <span>아직 회원이 아니신가요?</span>
-                <a href="/signup" id="signupLink">회원가입</a>
+                <a href="/signup" className={style.signupLink}>회원가입</a>
             </div>
         </div>
     );

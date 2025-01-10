@@ -1,9 +1,9 @@
-#signin-input-container {
+.container {
     margin-bottom: 6px;
     width: 100%;
 }
 
-.input-field {
+.inputField {
     width: 100%;
     box-sizing: border-box;
     padding: 8px 10px;
@@ -13,13 +13,13 @@
     line-height: 1.5;
 }
 
-.input-field::placeholder {
+.inputField::placeholder {
     color: var(--placeholder-gray);
     font-size: 12px;
     font-weight: 400;
 }
 
-.input-field:focus {
+.inputField:focus {
     outline: none;
     border-color: var(--main-green);
     box-shadow: 0 0 0 1px var(--main-green);

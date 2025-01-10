@@ -1,4 +1,4 @@
-#nav-tab-container {
+.container {
     width: 100%;
     background-color: white;
     display: flex;
@@ -13,7 +13,7 @@
     z-index: 999;
 }
 
-.tab-item {
+.tabItem {
     flex: 1;
     text-align: center;
     padding: 10px 0;
@@ -23,6 +23,6 @@
     color: #999999;
 }
 
-.tab-item.tab-active {
+.tabItem.tabActive {
     color: #000000;
 }

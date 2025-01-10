@@ -1,10 +1,12 @@
 import '../../styles/Style.css'
-import './RentalInfo.css'
+import style from './RentalInfo.module.css'
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Navtab from '../../components/Navtab/Navtab';
 import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
 
 const RentalInfo = () => {
+    const navigate = useNavigate();
     const tempRentalList = [
         {   studentCouncil : "HEYDAY",
             rentalStatus : "만료",
@@ -29,7 +31,7 @@ const RentalInfo = () => {
         ]
 
     return (
-        <div id="rent-info-container">
+        <div className={style.container}>
             <Navbar title="대여 정보 확인" onBackClick={() => window.history.back()} />
             <Navtab />
             {tempRentalList.map((rental, index) => (
@@ -38,7 +40,8 @@ const RentalInfo = () => {
                     studentCouncil={rental.studentCouncil} 
                     rentalStatus={rental.rentalStatus}
                     item={rental.item}
-                    expirationDate = {rental.expirationDate}/>
+                    expirationDate = {rental.expirationDate}
+                    onClick = {() => navigate('/rent/info/detail')}/>
             ))}
             
         </div>
