@@ -17,7 +17,8 @@ const RentalItem = () => {
         <div className={`pageContainer ${style.container}`}>
             <Navbar 
                 title={"물품 대여"} 
-                onBackClick={() => window.history.back()}/>
+                onBackClick={() => window.history.back()}
+                shadow={true}/>
             <hr/>
             {tempStudentCouncilList.map((item, index) => (
                 <StudentCouncilList 
