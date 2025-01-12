@@ -1,7 +1,9 @@
 import StudentCouncilList from "../../components/Box/StudentCouncilList";
 import Navbar from "../../components/Navbar/Navbar";
 import style from "./RentalItem.module.css"
+import { useNavigate } from "react-router-dom";
 const RentalItem = () => {
+    const navigate = useNavigate();
     const tempStudentCouncilList = [
         {   name : "총학생회 HEYDAY",
             address : "제1학생회관" },
@@ -24,7 +26,8 @@ const RentalItem = () => {
                 <StudentCouncilList 
                     key={index}
                     name={item.name} 
-                    address={item.address}/>
+                    address={item.address}
+                    onClick={() => navigate('/rent/item')}/>
             ))}
         </div>
     )
