@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
@@ -35,6 +35,11 @@ const SignupProfileStep = ({ onNext, onBack }) => {
         }
     };
 
+    useEffect(() => {
+        checkInputs();
+    }, [username, phone, checkInputs]);
+
+
     return (
         <>
             <Navbar title="학사인증" onBackClick={onBack} />
@@ -62,7 +67,7 @@ const SignupProfileStep = ({ onNext, onBack }) => {
                     value={phone}
                     onChange={handlePhoneChange}
                 />
-                <Button text="다음" type="submit" className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} />
+                <Button text="다음" type="submit" className={`fixWidth ${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} />
             </form>
         </>
     );

@@ -4,12 +4,10 @@
 
 .signupForm {
     width: 100%;
-    max-width: 350px;
 }
 
 .infoBox {
     width: 100%;
-    max-width: 350px;
     text-align: left;
 }
 
@@ -39,7 +37,6 @@
 
 .completeContainer {
     width: 100%;
-    max-width: 350px;
     text-align: center;
     margin: 0 auto;
     display: flex;
@@ -54,8 +51,6 @@
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 2.5rem);
-    max-width: 350px;
 }
 
 .completeContainer ion-icon {

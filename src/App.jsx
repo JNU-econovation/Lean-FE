@@ -5,6 +5,7 @@ import Main from './pages/Main/Main';
 import MyPage from './pages/Main/MyPage';
 import RentalInfo from './pages/RentalInfo/RentalInfo';
 import RentalInfoDetail from './pages/RentalInfo/RentalInfoDetail';
+import ReturnRequest from './pages/ReturnRequest/ReturnRequest';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/rent/info" element={<RentalInfo />} />
                 <Route path="/rent/info/detail" element={<RentalInfoDetail />} />
+                <Route path="/rent/return" element={<ReturnRequest/>}/>
             </Routes>
         </Router>
     );

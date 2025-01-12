@@ -13,6 +13,14 @@
     transform: translateY(-5px);
 }
 
+.rentalStateCard:not(.selected) {
+    background-color: white;
+}
+
+.rentalStateCard.selected {
+    background-color: #dceafd;
+}
+
 .headBox {
     display: flex;
     justify-content: space-between;
