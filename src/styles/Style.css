@@ -6,6 +6,22 @@
     position: relative;
 }
 
+.centerContainer {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+.centerContainer ion-icon {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: var(--main-green);
+}
+
 .card {
     width: 100%;
     padding: 10px;

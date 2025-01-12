@@ -1,31 +1,8 @@
-.signupContainer{
-    margin-top: 100px;
-}
-
-.signupForm {
-    width: 100%;
-}
-
-.infoBox {
-    width: 100%;
-    text-align: left;
-}
-
-.infoBox div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
 .infoText {
     font-size: 28px;
     font-weight: 900;
     margin: 0;
     letter-spacing: -0.1em;
-}
-
-.infoText.green {
-    color: var(--main-green);
 }
 
 .infoTextGray {
@@ -35,11 +12,10 @@
     color: #c0c0c0;
 }
 
-.signupButton {
+.mainButton {
     position: fixed;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-
 }
 
