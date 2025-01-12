@@ -79,11 +79,13 @@ const ReturnRequest = () => {
                     />
                 )
             })}
-            <Button
-                    text="반납하기"
-                    type="submit"
-                    className={`fixWidth ${style.returnButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} 
-                    />
+            <div className={style.buttonBox}>
+                <Button
+                        text="반납하기"
+                        type="submit"
+                        className={`fixWidth ${style.returnButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} 
+                        />
+            </div>
         </div>
     )
 };
