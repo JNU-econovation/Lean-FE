@@ -2,9 +2,9 @@ import style from './ItemRentalStateCard.module.css';
 import Badge from '../Badge/RentalStatusBadge';
 import PropTypes from 'prop-types';
 
-const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate, onClick}) => {
+const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate, onClick, isSelected}) => {
     return (
-        <div className={`card ${style.rentalStateCard}`} onClick={onClick}>
+        <div className={`card ${style.rentalStateCard} ${isSelected ? style.selected : ''}`} onClick={onClick}>
             <div className={style.headBox}>
                 <span>{studentCouncil}</span>
                 <Badge rentalStatus={rentalStatus} backgroundColor={'#ec8886'}/>
@@ -32,6 +32,7 @@ ItemRentalStateCard.propTypes = {
     rentalStatus: PropTypes.string.isRequired,
     expirationDate : PropTypes.string.isRequired,
     onClick : PropTypes.func,
+    isSelected: PropTypes.string,
 };
 
 export default ItemRentalStateCard;

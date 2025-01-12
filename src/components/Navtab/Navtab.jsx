@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import style from './Navtab.module.css';
+import PropTypes from 'prop-types';
 
-const Navtab = () => {
+const Navtab = ({tabs}) => {
     const [activeTab, setActiveTab] = useState('전체');
-    const tabs = ['전체', '예약', '대여', '반납', '만료'];
 
     return (
         <div className = {style.container}>
@@ -18,6 +18,10 @@ const Navtab = () => {
             ))}
         </div>
     );
+};
+
+Navtab.propTypes = {
+    tabs: PropTypes.array.isRequired,
 };
 
 export default Navtab;

@@ -46,6 +46,7 @@ const Main = () => {
                     icon='bag-remove'
                     iconColor='var(--sub-text-gray)'
                     iconOverlayColor='#d5d9e0'
+                    onClick={() => navigate('/rent/return')}
                     />
             </div>
             <MainCard

@@ -7,6 +7,7 @@ import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
 
 const RentalInfo = () => {
     const navigate = useNavigate();
+    const tabs = ['전체', '예약', '대여', '반납', '만료'];
     const tempRentalList = [
         {   studentCouncil : "HEYDAY",
             rentalStatus : "만료",
@@ -33,7 +34,7 @@ const RentalInfo = () => {
     return (
         <div className={style.container}>
             <Navbar title="대여 정보 확인" onBackClick={() => window.history.back()} />
-            <Navtab />
+            <Navtab tabs={tabs}/>
             {tempRentalList.map((rental, index) => (
                 <ItemRentalStateCard
                     key={index}
