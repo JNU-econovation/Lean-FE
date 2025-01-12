@@ -1,5 +1,6 @@
 import style from './ReturnRequest.module.css';
 import { useState, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Navtab from '../../components/Navtab/Navtab';
 import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
@@ -8,6 +9,7 @@ import Button from '../../components/Button/Button';
 const ReturnRequest = () => {
     const [selectedCards, setSelectedCards] = useState([])
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const navigate = useNavigate();
     const tabs = ['전체', '만료', '대여'];
     const tempRentalList = [
         {   id: 1,
@@ -58,6 +60,12 @@ const ReturnRequest = () => {
                 }
             });
         };
+
+        const handleReturn = () => {
+            if (!isButtonDisabled) {
+                navigate('/rent/return/complete');
+            }
+        };
     
     return(
         <div className={style.container}>
@@ -82,7 +90,7 @@ const ReturnRequest = () => {
             <div className={style.buttonBox}>
                 <Button
                         text="반납하기"
-                        type="submit"
+                        onClick={()=>handleReturn()}
                         className={`fixWidth ${style.returnButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} 
                         />
             </div>

@@ -6,6 +6,7 @@ import MyPage from './pages/Main/MyPage';
 import RentalInfo from './pages/RentalInfo/RentalInfo';
 import RentalInfoDetail from './pages/RentalInfo/RentalInfoDetail';
 import ReturnRequest from './pages/ReturnRequest/ReturnRequest';
+import ReturnRequestComplete from './pages/ReturnRequest/ReturnRequestComplete';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path="/rent/info" element={<RentalInfo />} />
                 <Route path="/rent/info/detail" element={<RentalInfoDetail />} />
                 <Route path="/rent/return" element={<ReturnRequest/>}/>
+                <Route path="/rent/return/complete" element={<ReturnRequestComplete/>}/>
             </Routes>
         </Router>
     );
