@@ -45,3 +45,24 @@
     width: calc(100% - 2.5rem);
     max-width: calc(800px - 2rem);
 }
+
+.selectCardContainer {
+    margin-bottom: 10px;
+    border: 1px solid #F1F1F1;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.selectCardContainer:hover,
+.selectCardContainer:active {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.selectCardContainer:not(.selected) {
+    background-color: white;
+}
+
+.selectCardContainer.selected {
+    background-color: #dceafd;
+}
