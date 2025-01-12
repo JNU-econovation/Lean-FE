@@ -36,6 +36,7 @@ const Main = () => {
                     icon='bag-check'
                     iconColor='var(--sub-text-gray)'
                     iconOverlayColor='#d5d9e0'
+                    onClick={() => navigate('/rent')}
                 />
                 <MainCard 
                     title="물품 반납"

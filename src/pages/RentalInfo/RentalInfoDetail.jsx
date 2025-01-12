@@ -22,7 +22,7 @@ const RentalInfoDetail = () => {
 
     return (
         <div className={style.container}>
-            <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} />
+            <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} shadow={true} />
             <ItemInfoBox
                 studentCouncil = {tempRentalInfo.studentCouncil}
                 item = {tempRentalInfo.item}

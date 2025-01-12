@@ -69,7 +69,7 @@ const ReturnRequest = () => {
     
     return(
         <div className={style.container}>
-            <Navbar title={"반납 신청"}/>
+            <Navbar title={"반납 신청"} onBackClick={() => window.history.back()}/>
             <Navtab tabs={tabs}/>
             {tempRentalList.map((rental) => {
                 const isCardSelected = selectedCards.includes(rental.id);
