@@ -79,7 +79,7 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
                 <Button
                     text="다음"
                     type="submit"
-                    className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} 
+                    className={`fixWidth ${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} 
                 />
             </form>
         </>

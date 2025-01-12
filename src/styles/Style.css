@@ -24,3 +24,8 @@
     margin-bottom: 0.5rem;
     transition: color 0.3s ease;
 }
+
+.fixWidth {
+    width: calc(100% - 2.5rem);
+    max-width: calc(800px - 2rem);
+}

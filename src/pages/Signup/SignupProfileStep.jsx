@@ -62,7 +62,7 @@ const SignupProfileStep = ({ onNext, onBack }) => {
                     value={phone}
                     onChange={handlePhoneChange}
                 />
-                <Button text="다음" type="submit" className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} />
+                <Button text="다음" type="submit" className={`fixWidth ${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} />
             </form>
         </>
     );

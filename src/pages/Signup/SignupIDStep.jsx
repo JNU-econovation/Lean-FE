@@ -76,7 +76,7 @@ const SignupIDStep = ({ onNext, onBack }) => {
                 <Button
                     text="회원가입"
                     type="submit"
-                    className={`${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`}
+                    className={`fixWidth ${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`}
                     disabled={isButtonDisabled}
                 />
             </form>
