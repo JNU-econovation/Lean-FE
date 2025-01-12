@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Dropdown from '../../components/Dropdown/SignupDropdown';
@@ -22,17 +22,14 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
 
     const handleCollege = (selectedValue) => {
         setCollege(selectedValue)
-        checkInputs();
     };
 
     const handleDepartment = (e) => {
         setDepartment(e.target.value)
-        checkInputs();
     };
 
     const handleStudentNumber = (e) => {
         setStudentNumber(e.target.value)
-        checkInputs();
     };
 
     const handleSubmit = (e) => {
@@ -42,6 +39,10 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
             onNext({ college, department, studentNumber });
         }
     };
+
+    useEffect(() => {
+        checkInputs();
+    }, [college, studentNumber, department, checkInputs]);
 
     return (
         <>

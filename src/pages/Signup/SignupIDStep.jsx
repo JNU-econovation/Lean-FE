@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
@@ -21,12 +21,10 @@ const SignupIDStep = ({ onNext, onBack }) => {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-        checkInputs();
     };
 
     const handlePasswordConfirmChange = (e) => {
         setPasswordConfirm(e.target.value);
-        checkInputs();
     };
 
     const handleSubmit = (e) => {
@@ -48,6 +46,10 @@ const SignupIDStep = ({ onNext, onBack }) => {
             onNext({ password });
         }
     };
+
+    useEffect(() => {
+        checkInputs();
+    }, [password, passwordConfirm, checkInputs]);
 
     return (
         <>

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import SigninInput from '../../components/Input/SignupInput';
 import Button from '../../components/Button/Button';
@@ -34,6 +34,11 @@ const SignupProfileStep = ({ onNext, onBack }) => {
             onNext({ username, phone });
         }
     };
+
+    useEffect(() => {
+        checkInputs();
+    }, [username, phone, checkInputs]);
+
 
     return (
         <>
