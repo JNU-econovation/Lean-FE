@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+}
+
+.itemImage {
+    width: 80px;
+    height: 80px;
+    background-color: var(--card-background-gray);
+    margin-right: 10px;
+}
+
+.itemNameBox {
+    display: flex;
+    align-items: center;
+}
+
+.itemNameBox p {
+    font-size: 16px;
+    font-weight: 800;
+
+}

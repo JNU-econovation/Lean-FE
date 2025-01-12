@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate, onClick, isSelected}) => {
     return (
-        <div className={`card ${style.rentalStateCard} ${isSelected ? style.selected : ''}`} onClick={onClick}>
+        <div className={`card selectCardContainer ${isSelected ? 'selected' : ''}`} onClick={onClick}>
             <div className={style.headBox}>
                 <span>{studentCouncil}</span>
                 <Badge rentalStatus={rentalStatus} backgroundColor={'#ec8886'}/>
