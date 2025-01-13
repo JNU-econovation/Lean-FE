@@ -1,0 +1,49 @@
+.container{
+    margin-top: 60px;
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+    background-color: var(--card-background-gray);
+    margin-right: 20px;
+}
+
+.itemBox {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+    text-align: start;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.address {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--sub-text-gray);
+    margin-top: 5px;
+}
+
+.DatePickerBox {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.buttonBox {
+    width: 100%;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+}

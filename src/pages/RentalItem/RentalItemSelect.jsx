@@ -34,7 +34,7 @@ const RentalItemSelect = () => {
 
         const handleRental = () => {
             if (!isButtonDisabled) {
-                navigate('/rent/return/complete');
+                navigate('/rent/item/time');
             }
         };
 
