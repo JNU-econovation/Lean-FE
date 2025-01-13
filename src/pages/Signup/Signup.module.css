@@ -28,18 +28,10 @@
     color: var(--main-green);
 }
 
-.infoTextGray {
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: -0.05em;
-    color: #c0c0c0;
-}
-
 .signupButton {
     position: fixed;
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-
 }
 

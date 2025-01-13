@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from './pages/Signup/Signup';
 import Signin from './pages/Signin/Signin';
 import Main from './pages/Main/Main';
+import MainAdmin from './pages/Main/MainAdmin';
 import MyPage from './pages/Main/MyPage';
 import RentalInfo from './pages/RentalInfo/RentalInfo';
 import RentalInfoDetail from './pages/RentalInfo/RentalInfoDetail';
@@ -11,6 +12,7 @@ import RentalItem from './pages/RentalItem/RentalItem';
 import RentalItemSelect from './pages/RentalItem/RentalItemSelect';
 import RentalTimeSelect from './pages/RentalItem/RentalTimeSelect';
 import RentalItemComplete from './pages/RentalItem/RentalItemComplete';
+import ManageItem from './pages/ManageItem/ManageItem';
 
 const App = () => {
     return (
@@ -20,6 +22,7 @@ const App = () => {
                 <Route path="/signin" element={<Signin />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/main" element={<Main />} />
+                <Route path="/admin/main" element={<MainAdmin />} />
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/rent/info" element={<RentalInfo />} />
                 <Route path="/rent/info/detail" element={<RentalInfoDetail />} />
@@ -29,6 +32,7 @@ const App = () => {
                 <Route path="/rent/item" element={<RentalItemSelect/>}/>
                 <Route path="/rent/item/time" element={<RentalTimeSelect/>}/>
                 <Route path="/rent/item/complete" element={<RentalItemComplete/>}/>
+                <Route path="/manage/item" element={<ManageItem/>}/>
             </Routes>
         </Router>
     );
