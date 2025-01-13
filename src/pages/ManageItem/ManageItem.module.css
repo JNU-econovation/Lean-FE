@@ -1,0 +1,22 @@
+.container{
+    margin-top: 60px;
+}
+
+.studentCouncilInfoBox {
+    width: 100%;
+    text-align: start;
+    padding-left: 10px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.address {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: var(--sub-text-gray);
+}

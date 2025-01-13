@@ -49,7 +49,7 @@ const MainPage = ({name, isStudentCouncil}) => {
                     icon='bag-check'
                     iconColor='var(--sub-text-gray)'
                     iconOverlayColor='#d5d9e0'
-                    onClick={isStudentCouncil?() => navigate('/rent'):() => navigate('/rent')}
+                    onClick={isStudentCouncil?() => navigate('/manage/item'):() => navigate('/rent')}
                 />
                 <MainCard 
                     title={isStudentCouncil?"대여 및 반납 관리":"반납 신청"}
