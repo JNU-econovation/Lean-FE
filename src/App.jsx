@@ -9,6 +9,8 @@ import ReturnRequest from './pages/ReturnRequest/ReturnRequest';
 import ReturnRequestComplete from './pages/ReturnRequest/ReturnRequestComplete';
 import RentalItem from './pages/RentalItem/RentalItem';
 import RentalItemSelect from './pages/RentalItem/RentalItemSelect';
+import RentalTimeSelect from './pages/RentalItem/RentalTimeSelect';
+import RentalItemComplete from './pages/RentalItem/RentalItemComplete';
 
 const App = () => {
     return (
@@ -25,6 +27,8 @@ const App = () => {
                 <Route path="/rent/return/complete" element={<ReturnRequestComplete/>}/>
                 <Route path="/rent" element={<RentalItem/>}/>
                 <Route path="/rent/item" element={<RentalItemSelect/>}/>
+                <Route path="/rent/item/time" element={<RentalTimeSelect/>}/>
+                <Route path="/rent/item/complete" element={<RentalItemComplete/>}/>
             </Routes>
         </Router>
     );
