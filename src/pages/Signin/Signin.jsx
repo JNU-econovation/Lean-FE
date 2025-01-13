@@ -12,10 +12,15 @@ const Signin = () => {
         password: ''
     });
 
-    const tempSigninInfo = {
+    const tempSigninInfo = [{
+        username: 'econo',
+        password: 'econo',
+        isStudentCouncil: false,
+    },{
         username: 'admin',
-        password: 'admin1234'
-    };
+        password: 'admin',
+        isStudentCouncil: true,
+    }]
 
     const getErrorMessage = () => {
         switch (signinError) {
@@ -33,18 +38,22 @@ const Signin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { username, password } = formData;
-
         if (username === '' || password === '') {
             setSigninError(1);
         } else if (handleSignin(username, password)) {
-            navigate('/main');
+            if(handleSignin(username, password).isStudentCouncil) {
+                navigate('/admin/main');
+            } else { navigate('/main')}
         } else {
             setSigninError(2);
         }
     };
 
     const handleSignin = (username, password) => {
-        return username === tempSigninInfo.username && password === tempSigninInfo.password;
+        const matchedUser = tempSigninInfo.find(
+            (info) => info.username === username && info.password === password
+        );
+        return matchedUser;
     };
 
     const handleChange = (e) => {
