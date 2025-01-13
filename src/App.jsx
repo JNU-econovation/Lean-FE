@@ -13,6 +13,7 @@ import RentalItemSelect from './pages/RentalItem/RentalItemSelect';
 import RentalTimeSelect from './pages/RentalItem/RentalTimeSelect';
 import RentalItemComplete from './pages/RentalItem/RentalItemComplete';
 import ManageItem from './pages/ManageItem/ManageItem';
+import ManageItemDelete from './pages/ManageItem/ManageItemDelete';
 
 const App = () => {
     return (
@@ -33,6 +34,7 @@ const App = () => {
                 <Route path="/rent/item/time" element={<RentalTimeSelect/>}/>
                 <Route path="/rent/item/complete" element={<RentalItemComplete/>}/>
                 <Route path="/manage/item" element={<ManageItem/>}/>
+                <Route path="/manage/item/delete" element={<ManageItemDelete/>}/>
             </Routes>
         </Router>
     );

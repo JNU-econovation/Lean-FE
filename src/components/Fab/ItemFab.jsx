@@ -1,7 +1,8 @@
 import { Fab, Box, Zoom, Typography } from "@mui/material";
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const ItemFab = () => {
+const ItemFab = ({onClickAdd, onClickDelete}) => {
     const [open, setOpen] = useState(false);
 
     const toggleFab = () => {
@@ -37,6 +38,7 @@ const ItemFab = () => {
             size="large"
             color="default"
             aria-label="add item"
+            onClick={onClickAdd}
             sx={{ ml: 2 }}
             >
                 <ion-icon size="large" name="add" style={{ cursor: 'pointer' }}></ion-icon>
@@ -51,6 +53,7 @@ const ItemFab = () => {
             size="large"
             color="default"
             aria-label="delete item"
+            onClick={onClickDelete}
             sx={{ ml: 2 }}
             >
                 <ion-icon size="large" name="trash" style={{ cursor: 'pointer' }}></ion-icon>
@@ -59,6 +62,11 @@ const ItemFab = () => {
         </Zoom>
     </Box>
     )
+};
+
+ItemFab.propTypes = {
+    onClickAdd: PropTypes.func,
+    onClickDelete: PropTypes.func,
 };
 
 export default ItemFab

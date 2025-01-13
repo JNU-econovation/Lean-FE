@@ -2,8 +2,10 @@ import style from './ManageItem.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 import ItemCard from '../../components/Card/ItemCard';
 import ItemFab from '../../components/Fab/ItemFab';
+import { useNavigate } from 'react-router-dom';
 
 const ManageItem = () => {
+    const navigate = useNavigate();
     const tempItemList = [
         {   id: 1,
             name:"우산(대)"},
@@ -30,7 +32,10 @@ const ManageItem = () => {
                         onClick = {() => {}}/>
                 )
             })}
-            <ItemFab/>
+            <ItemFab 
+                onClickAdd={()=>navigate('/main')}
+                onClickDelete={()=>navigate('/manage/item/delete')}
+                />
         </div>
     )
 };
