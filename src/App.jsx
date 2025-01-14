@@ -16,6 +16,7 @@ import ManageItem from './pages/ManageItem/ManageItem';
 import ManageItemDelete from './pages/ManageItem/ManageItemDelete';
 import ManageItemAdd from './pages/ManageItem/ManageItemAdd';
 import ManageItemInfo from './pages/ManageItem/ManageItemInfo';
+import ManageItemEdit from './pages/ManageItem/ManageItemEdit';
 
 const App = () => {
     return (
@@ -38,7 +39,8 @@ const App = () => {
                 <Route path="/manage/item" element={<ManageItem/>}/>
                 <Route path="/manage/item/delete" element={<ManageItemDelete/>}/>
                 <Route path="/manage/item/add" element={<ManageItemAdd/>}/>
-                <Route path="/manage/item/Info" element={<ManageItemInfo/>}/>
+                <Route path="/manage/item/info" element={<ManageItemInfo/>}/>
+                <Route path="/manage/item/edit" element={<ManageItemEdit/>}/>
             </Routes>
         </Router>
     );
