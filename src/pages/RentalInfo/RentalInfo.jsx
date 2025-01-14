@@ -38,7 +38,7 @@ const RentalInfo = () => {
             {tempRentalList.map((rental, index) => (
                 <ItemRentalStateCard
                     key={index}
-                    studentCouncil={rental.studentCouncil} 
+                    name={rental.studentCouncil} 
                     rentalStatus={rental.rentalStatus}
                     item={rental.item}
                     expirationDate = {rental.expirationDate}

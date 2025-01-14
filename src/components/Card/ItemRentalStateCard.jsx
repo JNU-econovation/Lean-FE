@@ -2,11 +2,11 @@ import style from './ItemRentalStateCard.module.css';
 import Badge from '../Badge/RentalStatusBadge';
 import PropTypes from 'prop-types';
 
-const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate, onClick, isSelected}) => {
+const ItemRentalStateCard = ({name, rentalStatus, item, expirationDate, onClick, isSelected}) => {
     return (
         <div className={`card selectCardContainer ${isSelected ? 'selected' : ''}`} onClick={onClick}>
             <div className={style.headBox}>
-                <span>{studentCouncil}</span>
+                <span>{name}</span>
                 <Badge rentalStatus={rentalStatus} backgroundColor={'#ec8886'}/>
             </div>
             <div className={style.bodyBox}>
@@ -27,7 +27,7 @@ const ItemRentalStateCard = ({studentCouncil, rentalStatus, item, expirationDate
 };
 
 ItemRentalStateCard.propTypes = {
-    studentCouncil: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     item: PropTypes.string.isRequired,
     rentalStatus: PropTypes.string.isRequired,
     expirationDate : PropTypes.string.isRequired,
