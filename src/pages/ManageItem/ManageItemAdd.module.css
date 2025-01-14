@@ -1,0 +1,30 @@
+.container{
+    padding-top: 80px;
+}
+
+.itemImage {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #ececec;
+    border-radius: 10%;
+    margin-bottom: 30px;
+}
+.itemImage ion-icon{
+    font-size: 28px;
+    position: absolute;
+    bottom: -5px;;
+    right: -8px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.itemAddButton {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}

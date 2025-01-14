@@ -1,5 +1,5 @@
 .container{
-    margin-top: 60px;
+    padding-top: 60px;
 }
 
 .studentCouncilInfoBox {
@@ -19,4 +19,16 @@
     font-weight: 500;
     margin-top: 5px;
     color: var(--sub-text-gray);
+}
+
+.buttonBox {
+    width: 100%;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
 }
