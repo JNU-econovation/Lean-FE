@@ -64,8 +64,8 @@ const MainPage = ({name, isStudentCouncil}) => {
                     />
             </div>
             <MainCard
-                title={isStudentCouncil?"상세 대여 정보":'대여 정보'}
-                description={isStudentCouncil?"상세 대여 정보를 확인할 수 있어요":'대여 정보를 확인할 수 있어요'}
+                title={isStudentCouncil?"학생 유저 승인":'대여 정보'}
+                description={isStudentCouncil?"학생 유저의 회원가입을 승인할 수 있어요":'대여 정보를 확인할 수 있어요'}
                 backgroundColor='#b4bfb6'
                 titleColor='white'
                 descriptionColor='white'
