@@ -1,0 +1,65 @@
+.container {
+    padding-top: 60px;
+}
+
+.container hr {
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    border: 4px solid #ccc;
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+    background-color: var(--card-background-gray);
+    margin-right: 20px;
+}
+
+.itemBox {
+    width: 100%;
+    display: flex;
+    margin: 20px 0;
+    text-align: start;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.address {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--sub-text-gray);
+    margin-top: 5px;
+}
+
+.itemInfoBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.textBox {
+    flex: 1;
+    margin-top: 20px;
+}
+
+.textBox p {
+    letter-spacing: -0.05em;
+    margin: 0;
+}
+
+.amount {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.itemEditButton {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}

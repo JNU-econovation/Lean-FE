@@ -29,7 +29,7 @@ const ManageItem = () => {
                     <ItemCard 
                         key={item.id}
                         item={item.name}
-                        onClick = {() => {}}/>
+                        onClick = {() => navigate('/manage/item/info')}/>
                 )
             })}
             <ItemFab 
