@@ -33,7 +33,7 @@ const ManageItem = () => {
                 )
             })}
             <ItemFab 
-                onClickAdd={()=>navigate('/main')}
+                onClickAdd={()=>navigate('/manage/item/add')}
                 onClickDelete={()=>navigate('/manage/item/delete')}
                 />
         </div>
