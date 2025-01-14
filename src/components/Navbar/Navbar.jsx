@@ -2,7 +2,7 @@ import style from './Navbar.module.css';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ title, onBackClick, home=false, shadow=false }) => {
+const Navbar = ({ title, onBackClick, home=false, shadow=false, isStudentCouncil=false }) => {
     const navigate = useNavigate();
     const handleBackClick = (e) => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const Navbar = ({ title, onBackClick, home=false, shadow=false }) => {
                     <ion-icon size="large" name="chevron-back-outline" style={{ cursor: 'pointer' }}></ion-icon>
                 </div>
                 <h2>{title}</h2>
-                <div className={style.home} onClick={() => navigate('/main')}>
+                <div className={style.home} onClick={() => {isStudentCouncil?navigate('/admin/main'):navigate('/main')}}>
                     <ion-icon name="home-outline" style={{ cursor: 'pointer' }}></ion-icon>
                 </div>
             </nav>
@@ -41,6 +41,7 @@ Navbar.propTypes = {
     onClick: PropTypes.func,
     home:PropTypes.bool,
     shadow:PropTypes.bool,
+    isStudentCouncil:PropTypes.bool,
 };
 
 export default Navbar;

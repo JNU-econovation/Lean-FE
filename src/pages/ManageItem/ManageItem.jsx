@@ -19,7 +19,7 @@ const ManageItem = () => {
 
     return (
         <div className={`pageContainer ${style.container}`}>
-            <Navbar title="관리 물품 선택" onBackClick={() => navigate('admin/main')} shadow={true}/>
+            <Navbar title="관리 물품 선택" onBackClick={() => window.history.back()} shadow={true}/>
             <div className={style.studentCouncilInfoBox}>
                 <p className={style.name}>총학생회 HEYDAY</p>
                 <p className={style.address}>제1학생회관</p>

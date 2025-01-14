@@ -7,7 +7,7 @@ const ManageItemInfo = () => {
     const navigate = useNavigate();
     return (
         <div className={`${style.container} pageContainer`}>
-            <Navbar title="물품 정보 보기" shadow={true} home="true" onBackClick={() => window.history.back()}/>
+            <Navbar title="물품 정보 보기" shadow={true} home="true"  isStudentCouncil={true} onBackClick={() => window.history.back()}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
 
@@ -38,7 +38,7 @@ const ManageItemInfo = () => {
             </div>
             <Button
                     text="수정하기"
-                    onClick={()=>{}}                    
+                    onClick={()=>navigate('/manage/item/edit')}                    
                     className={`fixWidth ${style.itemEditButton}`}
                 />
         </div>
