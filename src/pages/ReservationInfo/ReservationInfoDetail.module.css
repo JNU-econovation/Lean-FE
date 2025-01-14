@@ -8,3 +8,10 @@
     margin-top: 0;
     border: 4px solid var(--hr-gray);
 }
+
+.infoText{
+    text-align: start;
+    margin: 20px 0 0 10px;
+    font-weight: 800;
+    font-size: 18px;
+}

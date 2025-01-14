@@ -1,11 +1,12 @@
-import style from './RentalInfoDetail.module.css'
+import style from './ReservationInfoDetail.module.css'
 import Navbar from '../../components/Navbar/Navbar';
 import ItemInfoBox from '../../components/Box/ItemInfoBox';
 import RentalInfoBox from '../../components/Box/RentalInfoBox';
+import StudentInfoBox from '../../components/Box/StudentInfoBox';
 
-const RentalInfoDetail = () => {
+const ReservationInfoDetail = () => {
     const tempRentalInfo = 
-        {   studentCouncil : "HEYDAY",
+        {   studentCouncil : "카리나",
             rentalStatus : "EXPIRED",
             item : "우산(대)",
             rentalDate : "2025/01/12",
@@ -20,9 +21,14 @@ const RentalInfoDetail = () => {
             rentalItem : "우산(소)",
             overdueDuration: "3D 2H 초과" };
 
+    const studentInfo = 
+        {   phoneNumber: "010-1234-5678", 
+            college: "공과대학",
+            department: "컴퓨터정보통신공학과" };
+
     return (
         <div className={style.container}>
-            <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} shadow={true} />
+            <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} shadow={true} isStudentCouncil={true}/>
             <ItemInfoBox
                 studentCouncil = {tempRentalInfo.studentCouncil}
                 item = {tempRentalInfo.item}
@@ -30,9 +36,13 @@ const RentalInfoDetail = () => {
             <hr/>
             <RentalInfoBox 
                 rentalInfo={rentalInfo}
-                isStudentCouncil={false}/>
+                isStudentCouncil={true}/>
+            <hr/>
+            <p className={style.infoText}>학생 정보</p>
+            <StudentInfoBox
+                studentInfo={studentInfo}/>
         </div>
     );
 };
 
-export default RentalInfoDetail;
+export default ReservationInfoDetail;

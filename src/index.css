@@ -11,6 +11,11 @@
   --sub-text-gray: #888888;
   --placeholder-gray: #C4C4C4;
   --card-background-gray: #E2E4E8;
+  --hr-gray: #edefed;
+  --expiration : #ec8886;
+  --reservation : #7dc5b4;
+  --rental : #82b5f5;
+  --return : #a488e5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
