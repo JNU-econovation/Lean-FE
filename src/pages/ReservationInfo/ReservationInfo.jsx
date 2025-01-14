@@ -9,23 +9,23 @@ const ReservationInfo = () => {
     const tabs = ['전체', '예약', '대여', '반납', '만료'];
     const tempRentalList = [
         {   user : "카리나",
-            rentalStatus : "만료",
+            rentalStatus : "EXPIRED",
             item : "우산(대)",
             expirationDate : "초과"}, 
         {   user : "안유진",
-            rentalStatus : "만료",
+            rentalStatus : "RESERVED",
             item : "우산(대)",
             expirationDate : "초과"},
         {   user : "윈터",
-            rentalStatus : "만료",
+            rentalStatus : "RENTED",
             item : "우산(대)",
             expirationDate : "초과"},
         {   user : "장원영",
-            rentalStatus : "만료",
+            rentalStatus : "RETURNED",
             item : "우산(대)",
             expirationDate : "초과"},
         {   user : "설윤",
-            rentalStatus : "만료",
+            rentalStatus : "EXPIRED",
             item : "우산(대)",
             expirationDate : "초과"},
         ]
@@ -41,7 +41,7 @@ const ReservationInfo = () => {
                     rentalStatus={rental.rentalStatus}
                     item={rental.item}
                     expirationDate = {rental.expirationDate}
-                    onClick = {() => navigate('/rent/info/detail')}/>
+                    onClick = {() => navigate('/reservation/info/detail')}/>
             ))}
             
         </div>

@@ -7,7 +7,7 @@ const ItemRentalStateCard = ({name, rentalStatus, item, expirationDate, onClick,
         <div className={`card selectCardContainer ${isSelected ? 'selected' : ''}`} onClick={onClick}>
             <div className={style.headBox}>
                 <span>{name}</span>
-                <Badge rentalStatus={rentalStatus} backgroundColor={'#ec8886'}/>
+                <Badge rentalStatus={rentalStatus}/>
             </div>
             <div className={style.bodyBox}>
                 <div className={`circle ${style.itemIcon}`}>
