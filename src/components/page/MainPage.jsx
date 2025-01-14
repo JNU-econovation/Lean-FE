@@ -60,7 +60,7 @@ const MainPage = ({name, isStudentCouncil}) => {
                     icon='bag-remove'
                     iconColor='var(--sub-text-gray)'
                     iconOverlayColor='#d5d9e0'
-                    onClick={isStudentCouncil?() => navigate('/rent/return'):() => navigate('/rent/return')}
+                    onClick={isStudentCouncil?() => navigate('/reservation/info'):() => navigate('/rent/return')}
                     />
             </div>
             <MainCard
@@ -73,7 +73,7 @@ const MainPage = ({name, isStudentCouncil}) => {
                 iconColor='#727c74'
                 iconBackgroundColor='#9DB0A3'
                 iconOverlayColor='#9DB0A3'
-                onClick={isStudentCouncil?() => navigate('/rent/info'):() => navigate('/rent/info')}/>
+                onClick={isStudentCouncil?() => {}:() => navigate('/rent/info')}/>
                 
         </div>
     );
