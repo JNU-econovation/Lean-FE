@@ -3,24 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/SigninInput';
 import style from './Signin.module.css';
+import apiClient from '../../services/apiClient';
 
 const Signin = () => {
     const navigate = useNavigate();
     const [signinError, setSigninError] = useState(0);
     const [formData, setFormData] = useState({
-        username: '',
+        studentNumber: '',
         password: ''
     });
-
-    const tempSigninInfo = [{
-        username: 'econo',
-        password: 'econo',
-        isStudentCouncil: false,
-    },{
-        username: 'admin',
-        password: 'admin',
-        isStudentCouncil: true,
-    }]
 
     const getErrorMessage = () => {
         switch (signinError) {
@@ -37,23 +28,21 @@ const Signin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { username, password } = formData;
-        if (username === '' || password === '') {
-            setSigninError(1);
-        } else if (handleSignin(username, password)) {
-            if(handleSignin(username, password).isStudentCouncil) {
+        try {
+            const { studentNumber, password } = formData;
+            const response =await apiClient.post('/api/v1/signin', {
+                studentNumber: studentNumber,
+                password : password,
+            })
+            const { isStudentCouncil } = response.data;
+            if(isStudentCouncil){
                 navigate('/admin/main');
-            } else { navigate('/main')}
-        } else {
+            } else {
+                navigate('/main')
+            }
+        } catch (error) {
             setSigninError(2);
         }
-    };
-
-    const handleSignin = (username, password) => {
-        const matchedUser = tempSigninInfo.find(
-            (info) => info.username === username && info.password === password
-        );
-        return matchedUser;
     };
 
     const handleChange = (e) => {
@@ -71,9 +60,9 @@ const Signin = () => {
             <form className={style.signinForm} id="signin-form" onSubmit={handleSubmit} noValidate>
                 <Input
                     type="text"
-                    name="username"
-                    placeholder="아이디를 입력해주세요"
-                    value={formData.username}
+                    name="studentNumber"
+                    placeholder="학번을 입력해주세요"
+                    value={formData.studentNumber}
                     onChange={handleChange}
                     required
                 />
