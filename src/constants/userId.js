@@ -1,1 +1,1 @@
-export const USER_ID = 10;
+export const USER_ID = 1;
