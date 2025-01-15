@@ -11,13 +11,13 @@ const MainPage = () => {
 
   const [userName, setUserName] = useState('');
   const [isStudentCouncil, setIsStudentCouncil] = useState(false);
-  const [requestsCount, setRequestsCount] = useState(0); // "3건 존재" 처리용
+  const [requestsCount, setRequestsCount] = useState(0); 
 
   // 오늘 날짜 동적으로 계산
   const today = new Date();
-  const year = today.getFullYear(); // 년도 (예: 2024)
-  const month = today.getMonth() + 1; // 월 (0부터 시작하므로 +1 필요, 예: 11)
-  const day = today.getDate(); // 일 (예: 27)
+  const year = today.getFullYear(); 
+  const month = today.getMonth() + 1; 
+  const day = today.getDate(); 
 
   useEffect(() => {
     const fetchUserData = async () => {
