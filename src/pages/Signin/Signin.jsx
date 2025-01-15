@@ -9,6 +9,7 @@ const Signin = () => {
     const navigate = useNavigate();
     const [signinError, setSigninError] = useState(0);
     const [formData, setFormData] = useState({
+        // 상태관리
         studentNumber: '',
         password: ''
     });
@@ -26,16 +27,18 @@ const Signin = () => {
         }
     };
 
+    // POST요청 보내는 핸들러
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const { studentNumber, password } = formData;
-            const response =await apiClient.post('/api/v1/signin', {
+            const response = await apiClient.post('/api/v1/signin', {
+                // request Body
                 studentNumber: studentNumber,
                 password : password,
             })
             const { isStudentCouncil } = response.data;
-            if(isStudentCouncil){
+            if(response.data){
                 navigate('/admin/main');
             } else {
                 navigate('/main')
@@ -44,6 +47,7 @@ const Signin = () => {
             setSigninError(2);
         }
     };
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -63,7 +67,7 @@ const Signin = () => {
                     name="studentNumber"
                     placeholder="학번을 입력해주세요"
                     value={formData.studentNumber}
-                    onChange={handleChange}
+                    onChange={handleChange} // 값이 바뀔 때마다 handleChange 호출해서 formData에 저장
                     required
                 />
                 <Input
