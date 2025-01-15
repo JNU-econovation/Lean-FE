@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MainCard from '../Card/MainCard';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import apiClient from '../../services/apiClient';
 import style from './MainPage.module.css';
@@ -8,11 +8,10 @@ import { USER_ID } from '../../constants/userId';
 
 const MainPage = () => {
   const navigate = useNavigate();
-  // const { USER_ID } = useParams(); // URL에서 userId 가져오기
 
   const [userName, setUserName] = useState('');
   const [isStudentCouncil, setIsStudentCouncil] = useState(false);
-  const [requestsCount, setRequestsCount] = useState(null); // "3건 존재" 처리용
+  const [requestsCount, setRequestsCount] = useState(0); // "3건 존재" 처리용
 
   // 오늘 날짜 동적으로 계산
   const today = new Date();
@@ -26,19 +25,42 @@ const MainPage = () => {
         // 사용자 정보 API 호출
         const response = await apiClient.get(`api/v1/users/${USER_ID}`);
         const { name, studentCouncilId } = response.data;
-        console.log(response.data);
 
         setUserName(name);
-        setIsStudentCouncil(studentCouncilId !== null); // 학생회 여부 설정
-        // 요청 건수는 여기서 처리 가능
-        setRequestsCount(null); // "3건 존재" 부분은 유지
+        const isCouncil = studentCouncilId !== null;
+        setIsStudentCouncil(isCouncil);
+
+        // 학생회 여부에 따라 대기중/처리중 요청 카운트
+        if (isCouncil) {
+          await fetchRentalRequests(studentCouncilId);
+        }
       } catch (error) {
-        console.error('Failed to fetch user data:', error);
+        console.error("Failed to fetch user data:", error);
+      }
+    };
+
+    const fetchRentalRequests = async (studentCouncilId) => {
+      try {
+        // 학생회 요청 데이터 API 호출
+        const response = await apiClient.get(
+          `api/v1/rentals/student_council/${studentCouncilId}`
+        );
+
+        // "대기중" 또는 "처리중" 상태만 필터링
+        const filteredRequests = response.data.filter((request) =>
+          ["대기중", "처리중"].includes(request.rentalStatus)
+        );
+
+        // 필터링된 요청 개수 설정
+        setRequestsCount(filteredRequests.length);
+      } catch (error) {
+        console.error("Failed to fetch rental requests:", error);
+        setRequestsCount(0); // 실패 시 0으로 설정
       }
     };
 
     fetchUserData();
-  }, [USER_ID]);
+  }, []);
 
   return (
     <div className={style.container}>
@@ -73,8 +95,8 @@ const MainPage = () => {
       ) : (
         <div className={style.dateCard}>
           <p className={style.dateText}>{`${year}년 ${month}월 ${day}일`}</p>
-          <p className={style.untilText}>반납기한까지</p>
-          <p className={style.dDayText}>1DAY 2H</p>
+          <p className={style.untilText}>서비스이용</p>
+          <p className={style.dDayText}>대여 가능</p>
         </div>
       )}
 
