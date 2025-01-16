@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./MyPage.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import apiClient from "../../services/apiClient";
