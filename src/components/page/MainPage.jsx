@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MainCard from '../Card/MainCard';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import apiClient from '../../services/apiClient';
 import style from './MainPage.module.css';
-import { USER_ID } from '../../constants/userId';
 
-const MainPage = () => {
+const MainPage = ({userId}) => {
   const navigate = useNavigate();
 
   const [userName, setUserName] = useState('');
@@ -23,16 +22,15 @@ const MainPage = () => {
     const fetchUserData = async () => {
       try {
         // 사용자 정보 API 호출
-        const response = await apiClient.get(`api/v1/users/${USER_ID}`);
-        const { name, studentCouncilId } = response.data;
+        const response = await apiClient.get(`api/v1/users/${userId}`);
+        const { name, isStudentCouncil } = response.data;
 
         setUserName(name);
-        const isCouncil = studentCouncilId !== null;
-        setIsStudentCouncil(isCouncil);
+        setIsStudentCouncil(isStudentCouncil);
 
         // 학생회 여부에 따라 대기중/처리중 요청 카운트
-        if (isCouncil) {
-          await fetchRentalRequests(studentCouncilId);
+        if (isStudentCouncil) {
+          await fetchRentalRequests(isStudentCouncil);
         }
       } catch (error) {
         console.error("Failed to fetch user data:", error);
@@ -164,7 +162,7 @@ const MainPage = () => {
 };
 
 MainPage.propTypes = {
-  userId: PropTypes.string,
+  userId: PropTypes.number.isRequired,
 };
 
 export default MainPage;

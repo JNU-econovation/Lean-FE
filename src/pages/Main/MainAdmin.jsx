@@ -1,7 +1,8 @@
 import MainPage from '../../components/page/MainPage';
+import { USER_ID } from '../../constants/userId';
 const MainAdmin = () => {
     return (
-        <MainPage name='이현호' isStudentCouncil={true}/>
+        <MainPage userId={USER_ID.ADMIN}/>
     );
 };
 
