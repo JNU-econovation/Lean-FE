@@ -12,7 +12,7 @@ const RentalItem = () => {
     const [studentCouncilList, setStudentCouncilList] = useState([]);
 
     useEffect(() => {
-        const fetchUserData = async () => {
+        const fetchStudentCouncilData = async () => {
             try {
                 const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.USER}`);
                 const { collegeName } = userResponse.data;
@@ -26,7 +26,7 @@ const RentalItem = () => {
             }
         };
         
-        fetchUserData();
+        fetchStudentCouncilData();
         }, []);
 
     return(
@@ -41,7 +41,7 @@ const RentalItem = () => {
                     key={index}
                     name={item.name} 
                     address={item.address}
-                    onClick={() => navigate('/rent/item')}/>
+                    onClick={() => navigate(`/rent/item?id=${item.id}`)}/>
             ))}
         </div>
     )
