@@ -15,7 +15,7 @@ const RentalItemSelect = () => {
         const studentCouncilId = searchParams.get('id');
         const fetchItemData = async () => {
             try {
-                const itemsResponse = await apiClient.get(`/api/v1/items/${studentCouncilId}`);
+                const itemsResponse = await apiClient.get(`/api/v1/items/student-council/${studentCouncilId}`);
                 const { studentCouncilName, studentCouncilAddress, items } = itemsResponse.data;
                 setStudentCouncilInfo({
                     name: studentCouncilName,
@@ -46,7 +46,7 @@ const RentalItemSelect = () => {
                     <ItemCard 
                         key={item.id}
                         item={item.name}
-                        onClick = {() => navigate('/rent/item/time')}
+                        onClick = {() => navigate(`/rent/item/time?id=${item.id}`)}
                         />
                 )
             })}
