@@ -2,13 +2,37 @@ import style from './RentalItemSelect.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 import ItemCard from '../../components/Card/ItemCard';
 import Button from '../../components/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useCallback, useState } from 'react';
+import apiClient from '../../services/apiClient';
 
 const RentalItemSelect = () => {
     const [selectedCard, setSelectedCard] = useState([])
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [studentCouncilInfo, setStudentCouncilInfo] = useState([]);
+    const [itemsList, setItemsList] = useState([]);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+
+    useEffect(() => {
+        const studentCouncilId = searchParams.get('id');
+        const fetchItemData = async () => {
+            try {
+                const itemsResponse = await apiClient.get(`/api/v1/items/${studentCouncilId}`);
+                const { studentCouncilName, studentCouncilAddress, items } = itemsResponse.data;
+                setStudentCouncilInfo({
+                    name: studentCouncilName,
+                    address: studentCouncilAddress
+                });
+                setItemsList(items);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+        
+        fetchItemData();
+        }, [searchParams]);
+        
         
         const checkInputs = useCallback(() => {
             if (selectedCard.length === 0) {
@@ -17,7 +41,7 @@ const RentalItemSelect = () => {
                 setIsButtonDisabled(false);
             }
         }, [selectedCard]);
-
+        
         useEffect(() => {
             checkInputs();
         }, [selectedCard, checkInputs]);
@@ -38,16 +62,6 @@ const RentalItemSelect = () => {
             }
         };
 
-    const tempItemList = [
-        {   id: 1,
-            name:"우산(대)"},
-        {   id: 2,
-            name:"우산(소)"},
-        {   id: 3,
-            name:"돗자리(소)"},
-        {   id: 4,
-            name:"휴대용 충전기(C타입)"},
-    ]
     return (
         <div className={`pageContainer ${style.container}`}>
             <Navbar 
@@ -56,19 +70,18 @@ const RentalItemSelect = () => {
                 shadow={true}
                 onBackClick={() => window.history.back()}/>
             <div className={style.studentCouncilInfoBox}>
-                <p className={style.name}>총학생회 HEYDAY</p>
-                <p className={style.address}>제1학생회관</p>
+                <p className={style.name}>{studentCouncilInfo.name}</p>
+                <p className={style.address}>{studentCouncilInfo.address}</p>
             </div>
-            {tempItemList.map((item) => {
+            {itemsList.map((item) => {
                 const isCardSelected = selectedCard.includes(item.id);
                 return(
                     <ItemCard 
                         key={item.id}
                         item={item.name}
                         onClick = {() => {
-                            handleClickCard(item.id)}
-                            }
-                        isSelected={`${isCardSelected ? 'selected': ''}`}
+                            handleClickCard(item.id)}}
+                        isSelected={isCardSelected}
                         />
                 )
             })}
