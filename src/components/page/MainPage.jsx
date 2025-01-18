@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import apiClient from '../../services/apiClient';
 import style from './MainPage.module.css';
+import { formatDDay } from '../../hooks/dateFormatChange';
 
 const MainPage = ({userId}) => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ const MainPage = ({userId}) => {
   const [userName, setUserName] = useState('');
   const [isStudentCouncil, setIsStudentCouncil] = useState(false);
   const [requestsCount, setRequestsCount] = useState(0); 
+  const [rentalStatus, setRentalStatus] = useState("");
+  const [expirationDate, setExpirationDate] = useState(null);
 
   // 오늘 날짜 동적으로 계산
   const today = new Date();
@@ -31,6 +34,8 @@ const MainPage = ({userId}) => {
         // 학생회 여부에 따라 대기중/처리중 요청 카운트
         if (isStudentCouncil) {
           await fetchRentalRequests(studentCouncilId);
+        } else {
+          await fetchRentalData(userId)
         }
       } catch (error) {
         console.error("Failed to fetch user data:", error);
@@ -57,8 +62,61 @@ const MainPage = ({userId}) => {
       }
     };
 
+    const fetchRentalData = async (userId) => {
+      try {
+        const response = await apiClient.get(
+          `api/v1/rentals/${userId}`
+        );
+
+        const expiredRequests = response.data.filter(
+          (request) => request.rental_status === "만료"
+        );
+
+        const rentingRequests = response.data
+          .filter((request) => request.rental_status === "대여중")
+          .sort((a, b) => new Date(b.rental_date_expiration) - new Date(a.rental_date_expiration));
+
+        if (expiredRequests.length > 0) {
+          setRentalStatus('expired');
+        } else if (rentingRequests.length > 0) {
+          setRentalStatus('rental');
+          setExpirationDate(rentingRequests[0].rental_date_expiration);
+        }else {
+          setRentalStatus('reservable');
+        }
+      } catch (error) {
+        console.error("Failed to fetch rental requests:", error);
+      }
+    };
+    console.log(rentalStatus, expirationDate)
     fetchUserData();
-  }, []);
+  }, [userId, rentalStatus, expirationDate]);
+
+  const cardBackgroundColor = (() => {
+    switch (rentalStatus) {
+      case "expired":
+        return "#ec8886";
+      case "rental":
+        return "#72a8f8";
+      case "reservable":
+      default:
+        return "#6EBA8B";
+    }
+  })();
+
+  const displayText = (() => {
+    switch (rentalStatus) {
+      case "expired":
+        return "기한초과";
+      case "rental":
+        return expirationDate
+          ? `${formatDDay(expirationDate)}`
+          : "만료일 없음";
+      case "reservable":
+      default:
+        return "대여 가능";
+    }
+  })();
 
   return (
     <div className={style.container}>
@@ -68,13 +126,18 @@ const MainPage = ({userId}) => {
           <div className={`circle ${style.profileImage}`}>
             <ion-icon name="person"></ion-icon>
           </div>
-          <span>{userName + '님' || '관리자님'}</span>
-          <div
+          <span>{userName + '님'}</span>
+          {
+            !isStudentCouncil?
+            <div
             className={style.backButtonBox}
             onClick={() => navigate('/mypage')}
           >
             <ion-icon name="chevron-forward"></ion-icon>
           </div>
+          : ''
+          }
+          
         </div>
         <div className={style.profileTextBox}>
           <span>오늘 대운동장에서 피크닉 어때요?</span>
@@ -91,10 +154,10 @@ const MainPage = ({userId}) => {
           </p>
         </div>
       ) : (
-        <div className={style.dateCard}>
+        <div className={style.dateCard} style={{ background: cardBackgroundColor }}>
           <p className={style.dateText}>{`${year}년 ${month}월 ${day}일`}</p>
-          <p className={style.untilText}>서비스이용</p>
-          <p className={style.dDayText}>대여 가능</p>
+          <p className={style.untilText}>{rentalStatus === 'rental' ? '반납까지' : '서비스 이용'}</p>
+          <p className={style.dDayText}>{displayText}</p>
         </div>
       )}
 
