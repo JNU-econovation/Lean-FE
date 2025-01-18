@@ -23,14 +23,14 @@ const MainPage = ({userId}) => {
       try {
         // 사용자 정보 API 호출
         const response = await apiClient.get(`api/v1/users/${userId}`);
-        const { name, isStudentCouncil } = response.data;
+        const { name, isStudentCouncil, studentCouncilId } = response.data;
 
         setUserName(name);
         setIsStudentCouncil(isStudentCouncil);
 
         // 학생회 여부에 따라 대기중/처리중 요청 카운트
         if (isStudentCouncil) {
-          await fetchRentalRequests(isStudentCouncil);
+          await fetchRentalRequests(studentCouncilId);
         }
       } catch (error) {
         console.error("Failed to fetch user data:", error);
