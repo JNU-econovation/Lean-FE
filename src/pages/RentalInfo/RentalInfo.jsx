@@ -8,7 +8,7 @@ import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
 import apiClient from '../../services/apiClient';
 import {USER_ID} from "../../constants/userId";
 import RENTAL_STATUS from '../../constants/rentalStatus';
-import { formatTimeDifference } from '../../hooks/dateFormatChange';
+import { formatDDay } from '../../hooks/dateFormatChange';
 
 const RentalInfo = () => {
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ const RentalInfo = () => {
     const handleExpirationDate = (status, expiration) => {
         switch(status) {
             case '대여중' :
-                return formatTimeDifference(expiration);
+                return formatDDay(expiration);
             case '반납' :
                 return '반납'
             case '대기중' :
@@ -53,13 +53,13 @@ const RentalInfo = () => {
         <div className={style.container}>
             <Navbar title="대여 정보 확인" onBackClick={() => window.history.back()} />
             <Navtab tabs={tabs} onSelect={(tab) => setSelectedTab(tab)}/>
-            {filteredRentalList.map((rental, index) => (
+            {filteredRentalList.map((rental) => (
                 <ItemRentalStateCard
-                    key={index}
+                    key={rental.rental_id}
                     name={rental.student_council_name} 
                     rentalStatus={rental.rental_status}
                     item={rental.item_name}
-                    onClick = {() => navigate('/rent/info/detail')}
+                    onClick = {() => navigate(`/rent/info/detail?id=${rental.rental_id}`)}
                     expirationDate = {handleExpirationDate(rental.rental_status, rental.rental_date_expiration)}
                     />
             ))}
