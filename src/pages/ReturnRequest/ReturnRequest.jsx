@@ -14,27 +14,27 @@ const ReturnRequest = () => {
     const tempRentalList = [
         {   id: 1,
             studentCouncil : "HEYDAY",
-            rentalStatus : "EXPIRED",
+            rentalStatus : "만료",
             item : "우산(대)",
             expirationDate : "초과"}, 
         {   id: 2,
             studentCouncil : "HEYDAY",
-            rentalStatus : "RENTED",
+            rentalStatus : "만료",
             item : "우산(대)",
             expirationDate : "초과"},
         {   id: 3,
             studentCouncil : "HEYDAY",
-            rentalStatus : "RETURNED",
+            rentalStatus : "만료",
             item : "우산(대)",
             expirationDate : "초과"},
         {   id: 4,
             studentCouncil : "HEYDAY",
-            rentalStatus : "RESERVED",
+            rentalStatus : "만료",
             item : "우산(대)",
             expirationDate : "초과"},
         {   id: 5,
             studentCouncil : "HEYDAY",
-            rentalStatus : "RESERVED",
+            rentalStatus : "만료",
             item : "우산(대)",
             expirationDate : "초과"},
         ]
@@ -76,7 +76,7 @@ const ReturnRequest = () => {
                 return (
                 <ItemRentalStateCard
                     key={rental.id}
-                    studentCouncil={rental.studentCouncil} 
+                    name={rental.studentCouncil} 
                     rentalStatus={rental.rentalStatus}
                     item={rental.item}
                     expirationDate = {rental.expirationDate}
