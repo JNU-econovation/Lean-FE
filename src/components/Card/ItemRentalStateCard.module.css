@@ -43,10 +43,6 @@
     margin: 4px;
 }
 
-.rentalStatus {
-    color:#FF0000;
-}
-
 .description {
     font-weight: 400;
     color: var(--sub-text-gray)
