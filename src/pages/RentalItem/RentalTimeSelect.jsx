@@ -50,28 +50,27 @@ const RentalTimeSelect = () => {
             console.log(itemId);
     
             try {
-                // Combine selectedDate and selectedTime into a single datetime object
+                
                 const startTime = new Date(selectedDate);
                 startTime.setHours(selectedTime.getHours());
                 startTime.setMinutes(selectedTime.getMinutes());
     
-                // Define expiration time (e.g., 30 minutes after start time)
+                
                 const expirationTime = new Date(startTime);
                 expirationTime.setMinutes(startTime.getMinutes() + 30);
 
                 const requestBody = {
-                    startTime: startTime.toISOString(), // ISO 8601 형식으로 변환
-                    expirationTime: expirationTime.toISOString(), // ISO 8601 형식으로 변환
+                    startTime: startTime.toISOString(), 
+                    expirationTime: expirationTime.toISOString(), 
                 };
 
                 console.log(startTime);
                 console.log(expirationTime);
                 console.log("Request Body:", requestBody);
     
-                // Send POST request to the server
                 await apiClient.post(`/api/v1/rentals/${userId}/reservation/${itemId}`, requestBody);
     
-                navigate('/rent/item/complete'); // Navigate to the next page
+                navigate('/rent/item/complete'); 
             } catch (error) {
                 console.error("Failed to make reservation:", error);
                 alert("예약에 실패했습니다. 다시 시도해주세요.");
