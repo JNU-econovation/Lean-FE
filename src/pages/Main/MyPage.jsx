@@ -39,7 +39,7 @@ const MyPage = () => {
 
         for (const rental of rentalResponse.data) {
           if (
-            ["대여중", "반납요청", "처리중", "반납"].includes(rental.rental_status)
+            ["대여중", "처리중", "반납"].includes(rental.rental_status)
           ) {
             // 세 번째 API 호출: 대여 상세 정보 가져오기
             const rentalDetailResponse = await apiClient.get(
