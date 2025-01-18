@@ -2,7 +2,7 @@ import { useState } from 'react';
 import style from './Navtab.module.css';
 import PropTypes from 'prop-types';
 
-const Navtab = ({tabs}) => {
+const Navtab = ({tabs, onSelect}) => {
     const [activeTab, setActiveTab] = useState('전체');
 
     return (
@@ -11,7 +11,10 @@ const Navtab = ({tabs}) => {
                 <span
                     key={index}
                     className={`${style.tabItem} ${activeTab === tab ? style.tabActive : ''}`}
-                    onClick={() => setActiveTab(tab)}
+                    onClick={() => {
+                        setActiveTab(tab);
+                        onSelect(tab);}
+                    }
                 >
                     {tab}
                 </span>
@@ -22,6 +25,7 @@ const Navtab = ({tabs}) => {
 
 Navtab.propTypes = {
     tabs: PropTypes.array.isRequired,
+    onSelect: PropTypes.func,
 };
 
 export default Navtab;

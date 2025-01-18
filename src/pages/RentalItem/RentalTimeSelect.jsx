@@ -3,13 +3,31 @@ import CustomDatePicker from '../../components/DatePicker/CustomDatePicker';
 import style from './RentalTimeSelect.module.css'
 import Button from '../../components/Button/Button';
 import { useState, useCallback, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import apiClient from '../../services/apiClient';
 
 const RentalTimeSelect = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
+    const [itemInfo, setItemInfo] = useState({})
     const navigate = useNavigate();
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+    const [searchParams] = useSearchParams();
+
+    useEffect(() => {
+        const itemId = searchParams.get('id');
+        const fetchItemData = async () => {
+            try {
+                const itemsResponse = await apiClient.get(`/api/v1/items/${itemId}`);
+                const { name, studentCouncilAddress } = itemsResponse.data;
+                setItemInfo({name: name, address: studentCouncilAddress})
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+        
+        fetchItemData();
+        }, [searchParams]);
 
     const checkInputs = useCallback(() => {
         if (selectedDate && selectedTime) {
@@ -41,8 +59,8 @@ const RentalTimeSelect = () => {
 
                 </div>
                 <div className={style.itemNameBox}>
-                    <p className={style.name}>우산(대)</p>
-                    <p className={style.address}>제1학생회관</p>
+                    <p className={style.name}>{itemInfo.name}</p>
+                    <p className={style.address}>{itemInfo.address}</p>
                 </div>
             </div>
             <div className={style.DatePickerBox}>
