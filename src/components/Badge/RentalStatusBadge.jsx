@@ -16,7 +16,7 @@ const RentalStatusBadge = ({rentalStatus}) => {
 
 RentalStatusBadge.propTypes = {
     rentalStatus: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string.isRequired,
+    backgroundColor: PropTypes.string,
 };
 
 export default RentalStatusBadge;
