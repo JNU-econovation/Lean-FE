@@ -3,19 +3,11 @@ import style from "./MyPage.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import apiClient from "../../services/apiClient";
 import { USER_ID } from '../../constants/userId';
+import { formatDate } from "../../hooks/dateFormatChange";
 
 // 전화번호 포맷 함수
 const formatPhoneNumber = (phoneNumber) => {
     return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
-  };
-  
-  // 날짜 포맷 함수
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1; // 월은 0부터 시작하므로 +1
-    const day = date.getDate();
-    return `${year}년 ${month}월 ${day}일`;
   };
 
 const MyPage = () => {
@@ -31,7 +23,7 @@ const MyPage = () => {
     const fetchUserData = async () => {
       try {
         // 첫 번째 API 호출: 사용자 정보 가져오기
-        const userResponse = await apiClient.get(`/api/v1/users/${USER_ID}`);
+        const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.USER}`);
         const { name, phoneNumber, department } = userResponse.data;
         setUserInfo({
             name,
@@ -41,7 +33,7 @@ const MyPage = () => {
 
         // 두 번째 API 호출: 대여 목록 가져오기
         const rentalResponse = await apiClient.get(
-          `/api/v1/rentals/${USER_ID}`
+          `/api/v1/rentals/${USER_ID.USER}`
         );
         const filteredRentalList = [];
 
@@ -69,7 +61,7 @@ const MyPage = () => {
     };
 
     fetchUserData();
-  }, [USER_ID]);
+  }, []);
 
   return (
     <div className={`pageContainer ${style.container}`}>
