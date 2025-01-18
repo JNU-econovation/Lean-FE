@@ -88,7 +88,6 @@ const MainPage = ({userId}) => {
         console.error("Failed to fetch rental requests:", error);
       }
     };
-    console.log(rentalStatus, expirationDate)
     fetchUserData();
   }, [userId, rentalStatus, expirationDate]);
 

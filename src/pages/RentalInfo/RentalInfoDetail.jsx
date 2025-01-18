@@ -8,7 +8,11 @@ import { useSearchParams } from 'react-router-dom';
 
 const RentalInfoDetail = () => {
     const [searchParams] = useSearchParams();
-    const [rentalInfo, setRentalInfo] = useState([]);
+    const [rentalInfo, setRentalInfo] = useState({
+        studentCouncilName: '',
+        itemName: '',
+        rentalStatus: '',
+    });
 
     useEffect(() => {
         const rentalId = searchParams.get('id');
@@ -16,7 +20,6 @@ const RentalInfoDetail = () => {
             try {
                 const rentalResponse = await apiClient.get(`/api/v1/rentals/details/${rentalId}`);
                 setRentalInfo(rentalResponse.data);
-                console.log(rentalResponse.data)
             } catch (error) {
                 console.error("Failed to fetch data:", error);
             }

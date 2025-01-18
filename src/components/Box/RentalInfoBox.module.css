@@ -22,5 +22,9 @@
 }
 
 .expirationDate {
-    color: red;
+    color: var(--expiration);
+}
+
+.rentalDate {
+    color: var(--rental);
 }
