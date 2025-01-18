@@ -57,8 +57,12 @@ const ReturnRequest = () => {
 
         // 버튼 활성화 확인
         const checkInputs = useCallback(() => {
-            setIsButtonDisabled(selectedCards.length === 0);
-        }, [selectedCards]);
+            const allSelectedAreRentals = selectedCards.every((id) => {
+                const rental = rentalList.find((rental) => rental.rental_id === id);
+                return rental?.rental_status === '대여중';
+            });
+            setIsButtonDisabled(selectedCards.length === 0 || !allSelectedAreRentals);
+        }, [selectedCards, rentalList]);
     
         useEffect(() => {
             checkInputs();
@@ -96,7 +100,7 @@ const ReturnRequest = () => {
                     item={rental.item_name}
                     expirationDate={handleExpirationDate(rental.rental_status, rental.rental_date_expiration)}
                     onClick = {() => {
-                        handleClickCard(rental.rentalId)}
+                        handleClickCard(rental.rental_id)}
                         }
                     isSelected={`${isCardSelected ? 'selected': ''}`}
                     />
