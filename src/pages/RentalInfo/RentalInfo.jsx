@@ -33,6 +33,8 @@ const RentalInfo = () => {
         switch(status) {
             case '대여중' :
                 return formatDDay(expiration);
+            case '처리중' :
+                return formatDDay(expiration);
             case '반납' :
                 return '반납'
             case '대기중' :
@@ -47,7 +49,7 @@ const RentalInfo = () => {
             return true;
         }
         return rental.rental_status === selectedTab;
-    });
+    }).reverse();
 
     return (
         <div className={style.container}>
