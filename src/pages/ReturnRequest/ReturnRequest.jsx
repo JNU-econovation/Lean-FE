@@ -10,7 +10,7 @@ import apiClient from '../../services/apiClient';
 import { formatDDay } from '../../hooks/dateFormatChange';
 
 const ReturnRequest = () => {
-    const [selectedCards, setSelectedCards] = useState([])
+    const [selectedCards, setSelectedCards] = useState([]);
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [rentalList, setRentalList] = useState([]);
     const [selectedTab, setSelectedTab] = useState('전체');
@@ -80,9 +80,18 @@ const ReturnRequest = () => {
         };
 
         // 반납 버튼 클릭 핸들러
-        const handleReturn = () => {
+        const handleReturn = async () => {
             if (!isButtonDisabled) {
-                navigate('/rent/return/complete');
+                try {
+                    await Promise.all(
+                        selectedCards.map((rental_id) =>
+                            apiClient.put(`/api/v1/rentals/details/${rental_id}`)
+                        )
+                    );
+                    navigate('/rent/return/complete');
+                } catch (error) {
+                    console.error('Failed to send return request:', error);
+                }
             }
         };
     
