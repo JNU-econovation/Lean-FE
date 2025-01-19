@@ -9,12 +9,12 @@ const ManageItemEdit = () => {
 
     const {itemId, itemName, itemAmount} = location.state || {};
 
-    const [amount, setAmount] = useState(itemAmount || 0);
-
-    const handleSubmit = async () => {
+    const handleSubmit = async (updateData) => {
+        const {amount} = updateData;
+        console.log('Submitting PUT request with:', { itemId, amount });
         try {
             const response = await apiClient.put(`/api/v1/items/amounts/${itemId}`, {
-                amount,
+                amount
             });
 
             console.log('Item updated successfully:', response.data);
@@ -34,9 +34,8 @@ const ManageItemEdit = () => {
             buttonText="수정하기" 
             data={{
                 itemName,
-                itemAmount: amount}}
-            onAmountChange={(newAmount) => setAmount(newAmount)}
-            onSubmit={handleSubmit}
+                itemAmount}}
+            onSubmit={handleSubmit} 
         />
     )
 };

@@ -6,15 +6,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ConfirmDialog from '../Dialog/ConfirmDialog';
-import apiClient from '../../services/apiClient';
-import { USER_ID } from '../../constants/userId';
 
 const ItemAddEdit = ({title, buttonText, data, onSubmit}) => {
     const [itemName, setItemName] = useState(data?.itemName||'');
-    const [itemAmount, setItemAmount] = useState(data?.itemAmount?.toString() || ''); // 숫자를 문자열로 변환
+    const [itemAmount, setItemAmount] = useState(data?.itemAmount?.toString() || '');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [dialogOpen, setDialogOpen] = useState(false);
-    const navigate = useNavigate();
 
     const checkInputs = useCallback(() => {
         if (itemName && itemAmount) {
@@ -38,7 +35,12 @@ const ItemAddEdit = ({title, buttonText, data, onSubmit}) => {
 
     const handleConfirmAdd = () => {
         setDialogOpen(false);
-        // 부모 컴포넌트로 데이터 전달
+
+        console.log('Submitting data:', {
+            name: itemName,
+            amount: parseInt(itemAmount, 10),
+        }); // 디버깅용 로그
+
         onSubmit({
             name: itemName,
             amount: parseInt(itemAmount, 10),
