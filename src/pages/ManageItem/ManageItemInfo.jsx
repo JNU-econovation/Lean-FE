@@ -1,22 +1,28 @@
 import style from './ManageItemInfo.module.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Button from '../../components/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import apiClient from '../../services/apiClient';
 import { useState, useEffect } from 'react';
 
 const ManageItemInfo = () => {
     const navigate = useNavigate();
-    const queryParams = new URLSearchParams(location.search);
-    const itemId = queryParams.get("id");
-    const itemName = queryParams.get("itemName");
-    const studentCouncilAddress = queryParams.get("studentCouncilAddress");
+    const location = useLocation();
+    const { itemId, itemName, studentCouncilAddress } = location.state || {}; // state로 전달
     const [itemInfo, setItemInfo] = useState({
         itemAmount: 0,
         processAmount: 0,
         rentAmount: 0,
         stock: 0,
     });
+
+    // state가 없으면 리다이렉트 처리
+    useEffect(() => {
+        if (!itemId || !itemName || !studentCouncilAddress) {
+            console.warn("State is missing. Redirecting to the previous page.");
+            navigate('/manage/item'); // 리다이렉트 경로
+        }
+    }, [itemId, itemName, studentCouncilAddress, navigate]);
 
     // API 요청
     useEffect(() => {
