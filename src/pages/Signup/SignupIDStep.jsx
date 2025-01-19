@@ -5,8 +5,9 @@ import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
 import { isValidPassword, doPasswordsMatch, showError } from '../../hooks/useSignupValidation';
 import style from './Signup.module.css';
+import apiClient from '../../services/apiClient';
 
-const SignupIDStep = ({ onNext, onBack }) => {
+const SignupIDStep = ({ onNext, onBack, signupData }) => {
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -27,7 +28,7 @@ const SignupIDStep = ({ onNext, onBack }) => {
         setPasswordConfirm(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         let isValid = true;
@@ -43,7 +44,15 @@ const SignupIDStep = ({ onNext, onBack }) => {
         }
 
         if (isValid) {
-            onNext({ password });
+            try {
+                const payload = { ...signupData, password };
+                const response = await apiClient.post('/api/v1/users', payload);
+                console.log('회원가입 성공:', response.data);
+                onNext({ password });
+            } catch (error) {
+                console.error('회원가입 실패:', error);
+                showError(null, '회원가입에 실패했습니다. 다시 시도해주세요.');
+            }
         }
     };
 
@@ -88,7 +97,14 @@ const SignupIDStep = ({ onNext, onBack }) => {
 
 SignupIDStep.propTypes = {
     onNext: PropTypes.func.isRequired,
-    onBack: PropTypes.func.isRequired
+    onBack: PropTypes.func.isRequired,
+    signupData: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        phoneNumber: PropTypes.string.isRequired,
+        collegeId: PropTypes.number.isRequired,
+        department: PropTypes.string.isRequired,
+        studentNumber: PropTypes.string.isRequired,
+    }).isRequired,
 };
 
 export default SignupIDStep;

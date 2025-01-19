@@ -6,38 +6,38 @@ import PropTypes from 'prop-types';
 import style from './Signup.module.css';
 
 const SignupProfileStep = ({ onNext, onBack }) => {
-    const [username, setUsername] = useState('');
-    const [phone, setPhone] = useState('');
+    const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     const checkInputs = useCallback(() => {
-        if (username && phone) {
+        if (name && phoneNumber) {
             setIsButtonDisabled(false);
         } else {
             setIsButtonDisabled(true);
         }
-    }, [username, phone]);
+    }, [name, phoneNumber]);
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
+    const handleNameChange = (e) => {
+        setName(e.target.value);
         checkInputs();
     };
 
-    const handlePhoneChange = (e) => {
-        setPhone(e.target.value);
+    const handlePhoneNumberChange = (e) => {
+        setPhoneNumber(e.target.value);
         checkInputs();
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (username && phone) {
-            onNext({ username, phone });
+        if (name && phoneNumber) {
+            onNext({ name, phoneNumber });
         }
     };
 
     useEffect(() => {
         checkInputs();
-    }, [username, phone, checkInputs]);
+    }, [name, phoneNumber, checkInputs]);
 
 
     return (
@@ -53,19 +53,19 @@ const SignupProfileStep = ({ onNext, onBack }) => {
             <form className={style.signupForm} onSubmit={handleSubmit} noValidate>
                 <SigninInput
                     type="text"
-                    id="username"
+                    id="name"
                     label="이름"
                     placeholder="이름 입력"
-                    value={username}
-                    onChange={handleUsernameChange}
+                    value={name}
+                    onChange={handleNameChange}
                 />
                 <SigninInput
                     type="tel"
-                    id="phone"
+                    id="phoneNumber"
                     label="휴대폰번호"
                     placeholder="띄어쓰기나 -를 제외하고 입력"
-                    value={phone}
-                    onChange={handlePhoneChange}
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
                 />
                 <Button text="다음" type="submit" className={`fixWidth ${style.signupButton} ${isButtonDisabled ? "disabled" : ''}`} disabled={isButtonDisabled} />
             </form>

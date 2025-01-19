@@ -5,12 +5,27 @@ import Dropdown from '../../components/Dropdown/SignupDropdown';
 import Button from '../../components/Button/Button';
 import PropTypes from 'prop-types';
 import style from './Signup.module.css';
+import apiClient from '../../services/apiClient';
 
 const SignupAcademicStep = ({ onNext, onBack }) => {
-    const [college, setCollege] = useState('');
+    const [college, setCollege] = useState({});
+    const [collegeList, setCollegeList] = useState([]);
     const [department, setDepartment] = useState('');
     const [studentNumber, setStudentNumber] = useState('');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+
+    useEffect(() => {
+        const fetchCollegeData = async () => {
+            try {
+                const collegeResponse = await apiClient.get(`api/v1/users/colleges`);
+                setCollegeList(collegeResponse.data);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+        
+        fetchCollegeData();
+        }, []);
 
     const checkInputs = useCallback(() => {
         if (college && department && studentNumber) {
@@ -25,6 +40,7 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
     };
 
     const handleDepartment = (e) => {
+        console.log(e.target.value)
         setDepartment(e.target.value)
     };
 
@@ -34,9 +50,9 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (college && department && studentNumber) {
-            onNext({ college, department, studentNumber });
+            const collegeId = college.id;
+            onNext({ collegeId, department, studentNumber });
         }
     };
 
@@ -57,7 +73,7 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
             <form className={style.signupForm} onSubmit={handleSubmit} noValidate>
                 <Dropdown
                     label="단과대학"
-                    list={['공과대학', '인문대학', '사회대학', "AI융합대학", "교육대학"]}
+                    list={collegeList}
                     selected={college}
                     onSelect={handleCollege}
                 />
