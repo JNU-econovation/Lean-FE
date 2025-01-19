@@ -71,7 +71,13 @@ const ManageItemInfo = () => {
             </div>
             <Button
                     text="수정하기"
-                    onClick={()=>navigate('/manage/item/edit')}                    
+                    onClick={()=>navigate('/manage/item/edit', {
+                        state: {
+                            itemId,
+                            itemName,
+                            itemAmount: itemInfo.itemAmount
+                        }
+                    })}                    
                     className={`fixWidth ${style.itemEditButton}`}
                 />
         </div>
