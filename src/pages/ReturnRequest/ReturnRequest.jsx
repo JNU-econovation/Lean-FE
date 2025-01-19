@@ -22,7 +22,10 @@ const ReturnRequest = () => {
             const fetchRentalList = async () => {
                 try {
                     const response = await apiClient.get(`/api/v1/rentals/${USER_ID.USER}`);
-                    setRentalList(response.data);
+                    const filteredData = response.data.filter(
+                        (rental) => rental.rental_status === '만료' || rental.rental_status === '대여중'
+                    );
+                    setRentalList(filteredData);
                 } catch (error) {
                     console.error("Failed to fetch rental list:", error);
                 }
