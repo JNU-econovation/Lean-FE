@@ -57,7 +57,15 @@ const ManageItem = () => {
                     <ItemCard 
                         key={item.id}
                         item={item.name}
-                        onClick = {() => navigate('/manage/item/info')}/>
+                        onClick={() =>
+                            navigate(`/manage/item/info`, {
+                                state: {
+                                    itemId: item.id,
+                                    itemName: item.name,
+                                    studentCouncilAddress: studentCouncilInfo.studentCouncilAddress,
+                                },
+                            })
+                        }/>
                 )
             })}
             <ItemFab 

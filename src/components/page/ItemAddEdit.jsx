@@ -6,15 +6,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ConfirmDialog from '../Dialog/ConfirmDialog';
-import apiClient from '../../services/apiClient';
-import { USER_ID } from '../../constants/userId';
 
-const ItemAddEdit = ({title, buttonText, data}) => {
+const ItemAddEdit = ({title, buttonText, data, onSubmit}) => {
     const [itemName, setItemName] = useState(data?.itemName||'');
-    const [itemAmount, setItemAmount] = useState(data?.itemAmount||'');
+    const [itemAmount, setItemAmount] = useState(data?.itemAmount?.toString() || '');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [dialogOpen, setDialogOpen] = useState(false);
-    const navigate = useNavigate();
 
     const checkInputs = useCallback(() => {
         if (itemName && itemAmount) {
@@ -36,29 +33,18 @@ const ItemAddEdit = ({title, buttonText, data}) => {
         setDialogOpen(false);
     };
 
-    const handleConfirmEdit = async () => {
-        try {
-            // 사용자 ID로 studentCouncilId 가져오기
-            const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
-            const { studentCouncilId } = userResponse.data;
+    const handleConfirmAdd = () => {
+        setDialogOpen(false);
 
-            // POST 요청 보내기
-            const requestBody = {
-                name: itemName,
-                itemAmounts: {
-                    amounts: parseInt(itemAmount, 10), // 수량을 숫자로 변환
-                },
-            };
+        console.log('Submitting data:', {
+            name: itemName,
+            amount: parseInt(itemAmount, 10),
+        }); // 디버깅용 로그
 
-            // POST 요청 실행
-            console.log('Sending POST request:', requestBody); // 디버깅용 로그
-            await apiClient.post(`/api/v1/items/student-council/${studentCouncilId}`, requestBody);
-            
-            setDialogOpen(false);
-            navigate('/manage/item'); // 성공 시 물품 관리 페이지로 이동
-        } catch (error) {
-            console.error('Failed to save item:', error);
-        }
+        onSubmit({
+            name: itemName,
+            amount: parseInt(itemAmount, 10),
+        });
     };
 
 
@@ -109,7 +95,7 @@ const ItemAddEdit = ({title, buttonText, data}) => {
                 confirmText="저장"
                 open={dialogOpen}
                 onClose={handleDialogClose}
-                onConfirm={handleConfirmEdit}
+                onConfirm={handleConfirmAdd}
             />
         </div>
     )
