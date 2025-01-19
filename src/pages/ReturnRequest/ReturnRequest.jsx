@@ -56,7 +56,7 @@ const ReturnRequest = () => {
                 return true;
             }
             return rental.rental_status === selectedTab;
-        });
+        }).reverse();
 
         // 버튼 활성화 확인
         const checkInputs = useCallback(() => {

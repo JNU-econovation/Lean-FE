@@ -74,7 +74,7 @@ const MainPage = ({userId}) => {
 
         const rentingRequests = response.data
           .filter((request) => request.rental_status === "대여중")
-          .sort((a, b) => new Date(b.rental_date_expiration) - new Date(a.rental_date_expiration));
+          .sort((a, b) => new Date(a.rental_date_expiration) - new Date(b.rental_date_expiration));
 
         if (expiredRequests.length > 0) {
           setRentalStatus('expired');
