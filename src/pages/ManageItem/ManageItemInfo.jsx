@@ -7,7 +7,7 @@ const ManageItemInfo = () => {
     const navigate = useNavigate();
     return (
         <div className={`${style.container} pageContainer`}>
-            <Navbar title="물품 정보 보기" shadow={true} home="true"  isStudentCouncil={true} onBackClick={() => window.history.back()}/>
+            <Navbar title="물품 정보 보기" shadow={true} home={true}  isStudentCouncil={true} onBackClick={() => window.history.back()}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
 
