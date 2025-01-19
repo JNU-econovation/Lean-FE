@@ -26,7 +26,7 @@ const ManageItem = () => {
                 const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
                 const {studentCouncilId} = userResponse.data;
 
-                // studentCouncilId로 요청 보내기
+                // studentCouncilId로 요청
                 const response = await apiClient.get(`/api/v1/items/student-council/${studentCouncilId}`);
                 const { studentCouncilName, studentCouncilAddress, collegeName, items } = response.data;
 
