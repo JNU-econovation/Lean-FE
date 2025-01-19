@@ -145,7 +145,7 @@ const MainPage = ({userId}) => {
 
       {/* 날짜 및 요청/반납 상태 카드 */}
       {isStudentCouncil ? (
-        <div className={style.dateCard}>
+        <div className={style.dateCard} style={{ background: cardBackgroundColor }}>
           <p className={style.dateText}>{`${year}년 ${month}월 ${day}일`}</p>
           <p className={style.untilText}>들어온 요청</p>
           <p className={style.dDayText}>
