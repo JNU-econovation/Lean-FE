@@ -22,7 +22,12 @@ const ManageItem = () => {
     useEffect(() => {
         const fetchStudentCouncilInfo = async () => {
             try {
-                const response = await apiClient.get(`/api/v1/items/student-council/${USER_ID.ADMIN}`);
+                // UserId로 요청 보내기
+                const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
+                const {studentCouncilId} = userResponse.data;
+
+                // studentCouncilId로 요청 보내기
+                const response = await apiClient.get(`/api/v1/items/student-council/${studentCouncilId}`);
                 const { studentCouncilName, studentCouncilAddress, collegeName, items } = response.data;
 
                 // 상태 업데이트
