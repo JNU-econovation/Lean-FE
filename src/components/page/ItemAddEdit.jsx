@@ -6,6 +6,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ConfirmDialog from '../Dialog/ConfirmDialog';
+import apiClient from '../../services/apiClient';
+import { USER_ID } from '../../constants/userId';
 
 const ItemAddEdit = ({title, buttonText, data}) => {
     const [itemName, setItemName] = useState(data?.itemName||'');
@@ -34,23 +36,37 @@ const ItemAddEdit = ({title, buttonText, data}) => {
         setDialogOpen(false);
     };
 
-    const handleConfirmEdit = () => {
-        console.log("Item edited!");
-        setDialogOpen(false);
-        navigate('/manage/item/info')
+    const handleConfirmEdit = async () => {
+        try {
+            // 사용자 ID로 studentCouncilId 가져오기
+            const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
+            const { studentCouncilId } = userResponse.data;
+
+            // POST 요청 보내기
+            const requestBody = {
+                name: itemName,
+                itemAmounts: {
+                    amounts: parseInt(itemAmount, 10), // 수량을 숫자로 변환
+                },
+            };
+
+            // POST 요청 실행
+            console.log('Sending POST request:', requestBody); // 디버깅용 로그
+            await apiClient.post(`/api/v1/items/student-council/${studentCouncilId}`, requestBody);
+            
+            setDialogOpen(false);
+            navigate('/manage/item'); // 성공 시 물품 관리 페이지로 이동
+        } catch (error) {
+            console.error('Failed to save item:', error);
+        }
     };
+
 
     const handleItem= (e) => {
         e.preventDefault();
 
         if (itemName && itemAmount) {
-            if(data) {
-                console.log("수정 처리")
-                setDialogOpen(true)
-            } else {
-                console.log("추가 처리")
-                navigate('/manage/item')
-            }
+            setDialogOpen(true);
         }
     };
 
@@ -101,8 +117,8 @@ const ItemAddEdit = ({title, buttonText, data}) => {
 
 ItemAddEdit.propTypes = {
     title: PropTypes.string.isRequired,
-    buttonText: PropTypes.number.isRequired,
-    data: PropTypes.array,
+    buttonText: PropTypes.string.isRequired,
+    data: PropTypes.object,
 };
 
 export default ItemAddEdit;
