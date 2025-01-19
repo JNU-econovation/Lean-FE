@@ -40,6 +40,7 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
     };
 
     const handleDepartment = (e) => {
+        console.log(e.target.value)
         setDepartment(e.target.value)
     };
 
@@ -49,9 +50,9 @@ const SignupAcademicStep = ({ onNext, onBack }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (college && department && studentNumber) {
-            onNext({ college, department, studentNumber });
+            const collegeId = college.id;
+            onNext({ collegeId, department, studentNumber });
         }
     };
 

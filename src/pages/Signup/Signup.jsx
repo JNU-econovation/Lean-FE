@@ -47,10 +47,10 @@ const Signup = () => {
                             setCurrentStep(4);
                         }}
                         onBack={handleBackClick}
+                        signupData = {signupData}
                     />
                 );
             case 4:
-                console.log(signupData);
                 return <CompleteStep/>;
             default:
                 return null;
