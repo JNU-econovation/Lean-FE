@@ -47,7 +47,7 @@ const ManageItem = () => {
 
     return (
         <div className={`pageContainer ${style.container}`}>
-            <Navbar title="관리 물품 선택" onBackClick={() => window.history.back()} shadow={true}/>
+            <Navbar title="관리 물품 선택" onBackClick={() => navigate('/admin/main')} shadow={true}/>
             <div className={style.studentCouncilInfoBox}>
                 <p className={style.name}>{studentCouncilInfo.collegeName} {studentCouncilInfo.studentCouncilName}</p>
                 <p className={style.address}>{studentCouncilInfo.studentCouncilAddress}</p>

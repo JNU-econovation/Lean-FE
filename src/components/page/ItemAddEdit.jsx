@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import ConfirmDialog from '../Dialog/ConfirmDialog';
 
 const ItemAddEdit = ({title, buttonText, data, onSubmit}) => {
+    const navigate = useNavigate();
     const [itemName, setItemName] = useState(data?.itemName||'');
     const [itemAmount, setItemAmount] = useState(data?.itemAmount?.toString() || '');
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -63,7 +64,7 @@ const ItemAddEdit = ({title, buttonText, data, onSubmit}) => {
 
     return (
         <div className={`${style.container} pageContainer`}>
-            <Navbar title={title} shadow={true} onBackClick={() => window.history.back()}/>
+            <Navbar title={title} shadow={true} onBackClick={() => navigate('/manage/item')}/>
             <div className={`${style.itemImage}`}>
                 <ion-icon name="camera"></ion-icon>
             </div>
@@ -105,6 +106,7 @@ ItemAddEdit.propTypes = {
     title: PropTypes.string.isRequired,
     buttonText: PropTypes.string.isRequired,
     data: PropTypes.object,
+    
 };
 
 export default ItemAddEdit;

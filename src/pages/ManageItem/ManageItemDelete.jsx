@@ -100,7 +100,7 @@ const ManageItemDelete = () => {
 
     return (
         <div className={`pageContainer ${style.container}`}>
-            <Navbar title="물품 삭제" onBackClick={() => window.history.back()} shadow={true}/>
+            <Navbar title="물품 삭제" onBackClick={() => navigate('/manage/item')} shadow={true}/>
             <div className={style.studentCouncilInfoBox}>
                 <p className={style.name}>{studentCouncilInfo.collegeName} {studentCouncilInfo.studentCouncilName}</p>
                 <p className={style.address}>{studentCouncilInfo.studentCouncilAddress}</p>

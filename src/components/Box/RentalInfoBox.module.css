@@ -28,3 +28,16 @@
 .rentalDate {
     color: var(--rental);
 }
+
+.reservation {
+    color: var(--reservation);
+}
+
+.infoBox {
+    align-items: center;
+}
+
+.infoBox ion-icon {
+    font-size: 25px;
+    cursor: pointer;
+}
