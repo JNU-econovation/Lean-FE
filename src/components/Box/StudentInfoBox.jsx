@@ -6,15 +6,15 @@ const StudentInfoBox = ({studentInfo}) => {
         <div className={style.container}>
             <div>
                 <p className={style.info}>연락처</p>
-                <p className={style.value}>{studentInfo.phoneNumber}</p>
+                <p className={style.value}>{studentInfo.userPhoneNumber}</p>
             </div>
             <div>
                 <p className={style.info}>단과대학</p>
-                <p className={style.value}>{studentInfo.college}</p>
+                <p className={style.value}>{studentInfo.userCollegeName}</p>
             </div>
             <div>
                 <p className={style.info}>학과</p>
-                <p className={style.value}>{studentInfo.department}</p>
+                <p className={style.value}>{studentInfo.userDepartment}</p>
             </div>
         </div>
     )
@@ -22,7 +22,11 @@ const StudentInfoBox = ({studentInfo}) => {
 };
 
 StudentInfoBox.propTypes = {
-    studentInfo: PropTypes.array.isRequired,
+    studentInfo: PropTypes.shape({
+        userPhoneNumber: PropTypes.string,
+        userCollegeName: PropTypes.string,
+        userDepartment: PropTypes.string,
+    }).isRequired,
 };
 
 export default StudentInfoBox;

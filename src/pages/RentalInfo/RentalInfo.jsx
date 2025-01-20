@@ -17,16 +17,17 @@ const RentalInfo = () => {
     const [selectedTab, setSelectedTab] = useState('전체')
 
     useEffect(() => {
-        const fetchStudentCouncilData = async () => {
+        const fetchRentalData = async () => {
             try {
                 const rentalResponse = await apiClient.get(`/api/v1/rentals/${USER_ID.USER}`);
                 setRentalList(rentalResponse.data);
+                console.log(rentalResponse.data)
             } catch (error) {
                 console.error("Failed to fetch data:", error);
             }
         };
         
-        fetchStudentCouncilData();
+        fetchRentalData();
         }, []);
 
     const handleExpirationDate = (status, expiration) => {

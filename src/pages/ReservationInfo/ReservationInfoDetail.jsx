@@ -3,44 +3,50 @@ import Navbar from '../../components/Navbar/Navbar';
 import ItemInfoBox from '../../components/Box/ItemInfoBox';
 import RentalInfoBox from '../../components/Box/RentalInfoBox';
 import StudentInfoBox from '../../components/Box/StudentInfoBox';
+import { useEffect, useState } from 'react';
+import apiClient from '../../services/apiClient';
+import { useSearchParams } from 'react-router-dom';
 
 const ReservationInfoDetail = () => {
-    const tempRentalInfo = 
-        {   studentCouncil : "카리나",
-            rentalStatus : "EXPIRED",
-            item : "우산(대)",
-            rentalDate : "2025/01/12",
-            expirationDate : "2025/01/15",
-            returnAddress : "제1학생회관",
-            expirationStatus : "3D 2H 초과" };
-    
-    const rentalInfo = 
-        {   rentalDate: "2025/01/12", 
-            expirationDate: "2025/01/15", 
-            returnAddress: "제1학생회관",
-            rentalItem : "우산(소)",
-            overdueDuration: "3D 2H 초과" };
+    const [searchParams] = useSearchParams();
+    const [rentalId, setRentalId] = useState()
+    const [rentalInfo, setRentalInfo] = useState({
+        studentCouncilName: '',
+        itemName: '',
+        rentalStatus: '',
+    });
 
-    const studentInfo = 
-        {   phoneNumber: "010-1234-5678", 
-            college: "공과대학",
-            department: "컴퓨터정보통신공학과" };
+    useEffect(() => {
+        const id = searchParams.get('id')
+        setRentalId(id)
+        const fetchRentalData = async () => {
+            try {
+                const rentalResponse = await apiClient.get(`/api/v1/rentals/details/${id}`);
+                setRentalInfo(rentalResponse.data);
+            } catch (error) {
+                console.error("Failed to fetch data:", error);
+            }
+        };
+        
+        fetchRentalData();
+        }, [rentalId, searchParams]);
 
     return (
         <div className={style.container}>
             <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} shadow={true} isStudentCouncil={true}/>
             <ItemInfoBox
-                studentCouncil = {tempRentalInfo.studentCouncil}
-                item = {tempRentalInfo.item}
-                rentalStatus = {tempRentalInfo.rentalStatus}/>
+                studentCouncil = {rentalInfo.studentCouncilName}
+                item = {rentalInfo.itemName}
+                rentalStatus = {rentalInfo.rentalStatus}/>
             <hr/>
             <RentalInfoBox 
                 rentalInfo={rentalInfo}
-                isStudentCouncil={true}/>
+                isStudentCouncil={true}
+                rentalId={rentalId}/>
             <hr/>
             <p className={style.infoText}>학생 정보</p>
             <StudentInfoBox
-                studentInfo={studentInfo}/>
+                studentInfo={rentalInfo}/>
         </div>
     );
 };
