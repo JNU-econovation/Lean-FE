@@ -15,7 +15,7 @@ const ImageBox = ({ item }) => {
     return (
             <div>
                 {itemImage ? (
-                    <img src={itemImage} alt={`${item} 이미지`} style={{ width: '80px' }} />
+                    <img src={itemImage} alt={`${item} 이미지`} style={{ width: '100px' }} />
                 ) : (
                     <ion-icon name="cube-outline" style={{ fontSize: '45px', color: '#cecece' }}></ion-icon>
                 )}

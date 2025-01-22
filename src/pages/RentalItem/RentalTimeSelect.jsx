@@ -6,6 +6,7 @@ import { useState, useCallback, useEffect, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import apiClient from '../../services/apiClient';
 import { UserContext } from '../../hooks/userContext';
+import ImageBox from '../../components/ImageBox/ImageBox';
 
 const RentalTimeSelect = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -88,7 +89,7 @@ const RentalTimeSelect = () => {
                 onBackClick={() => window.history.back()}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
-                    <ion-icon  on-icon name="cube-outline"></ion-icon>
+                    <ImageBox item={itemInfo.name}/>
                 </div>
                 <div className={style.itemNameBox}>
                     <p className={style.name}>{itemInfo.name}</p>
