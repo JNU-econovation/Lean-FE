@@ -27,19 +27,20 @@ const Signin = () => {
         }
     };
 
-    // POST요청 보내는 핸들러
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const { studentNumber, password } = formData;
             const response = await apiClient.post('/api/v1/signin', {
-                // request Body
                 studentNumber: studentNumber,
                 password : password,
             })
-            const { isStudentCouncil } = response.data;
-            if(response.data){
-                navigate('/admin/main');
+            const { accessToken, refreshToken } = response.data
+            localStorage.setItem('accessToken', accessToken)
+            localStorage.setItem('refreshToken', refreshToken)
+            const redirectUrl = new URLSearchParams(window.location.search).get('redirectUrl')
+            if (redirectUrl) {
+                navigate(decodeURIComponent(redirectUrl))
             } else {
                 navigate('/main')
             }
