@@ -3,10 +3,10 @@ import Navbar from '../../components/Navbar/Navbar';
 import ItemCard from '../../components/Card/ItemCard';
 import ConfirmDialog from '../../components/Dialog/ConfirmDialog';
 import Button from '../../components/Button/Button';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { USER_ID } from '../../constants/userId';
 import apiClient from '../../services/apiClient';
+import { UserContext } from '../../hooks/userContext';
 
 const ManageItemDelete = () => {
     const [selectedCard, setSelectedCard] = useState([]);
@@ -18,6 +18,7 @@ const ManageItemDelete = () => {
         studentCouncilAddress: '',
         collegeName: '',
     });
+    const currentUser = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ const ManageItemDelete = () => {
         const fetchStudentCouncilData = async () => {
             try {
                 // User ID로 studentCouncilId 가져오기
-                const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
+                const userResponse = await apiClient.get(`/api/v1/users/${currentUser.user_id}`);
                 const { studentCouncilId } = userResponse.data;
 
                 // studentCouncilId로 물품 데이터 가져오기
@@ -46,7 +47,7 @@ const ManageItemDelete = () => {
         };
 
         fetchStudentCouncilData();
-    }, []);
+    }, [currentUser.user_id]);
 
     // 버튼 활성화 여부 확인
     const checkInputs = useCallback(() => {

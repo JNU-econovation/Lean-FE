@@ -40,7 +40,7 @@ const ManageItemInfo = () => {
 
     return (
         <div className={`${style.container} pageContainer`}>
-            <Navbar title="물품 정보 보기" shadow={true} home={true}  isStudentCouncil={true} onBackClick={() => navigate('/manage/item')}/>
+            <Navbar title="물품 정보 보기" shadow={true} home={true} onBackClick={() => navigate('/manage/item')}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
 

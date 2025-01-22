@@ -2,19 +2,19 @@ import StudentCouncilList from "../../components/Box/StudentCouncilList";
 import Navbar from "../../components/Navbar/Navbar";
 import style from "./RentalItem.module.css"
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import apiClient from "../../services/apiClient";
-import { USER_ID } from "../../constants/userId";
+import { UserContext } from "../../hooks/userContext";
 
 const RentalItem = () => {
     const navigate = useNavigate();
-
+    const currentUser = useContext(UserContext);
     const [studentCouncilList, setStudentCouncilList] = useState([]);
 
     useEffect(() => {
         const fetchStudentCouncilData = async () => {
             try {
-                const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.USER}`);
+                const userResponse = await apiClient.get(`/api/v1/users/${currentUser.user_id}`);
                 const { collegeName } = userResponse.data;
                 const studentCouncilResponse = await apiClient.get(
                 `/api/v1/users/student-council`
@@ -27,7 +27,7 @@ const RentalItem = () => {
         };
         
         fetchStudentCouncilData();
-        }, []);
+        }, [currentUser.user_id]);
 
     return(
         <div className={`pageContainer ${style.container}`}>

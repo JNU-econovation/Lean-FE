@@ -1,15 +1,17 @@
 import ItemAddEdit from "../../components/page/ItemAddEdit";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient";
-import { USER_ID } from "../../constants/userId";
+import { useContext } from "react";
+import { UserContext } from "../../hooks/userContext";
 
 const ManageItemAdd = () => {
     const navigate = useNavigate();
+    const currentUser = useContext(UserContext);
 
     const handleSubmit = async (itemData) => {
         try {
             // 사용자 ID로 studentCouncilId 가져오기
-            const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
+            const userResponse = await apiClient.get(`/api/v1/users/${currentUser.user_id}`);
             const { studentCouncilId } = userResponse.data;
 
             // POST 요청 보내기
