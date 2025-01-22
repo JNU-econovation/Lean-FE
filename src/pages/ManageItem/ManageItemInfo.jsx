@@ -43,7 +43,7 @@ const ManageItemInfo = () => {
             <Navbar title="물품 정보 보기" shadow={true} home={true} onBackClick={() => navigate('/manage/item')}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
-
+                    <ion-icon  on-icon name="cube-outline"></ion-icon>
                 </div>
                 <div className={style.itemNameBox}>
                     <p className={style.name}>{itemName}</p>

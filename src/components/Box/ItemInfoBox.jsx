@@ -7,7 +7,7 @@ const ItemInfoBox = ({studentCouncil, item, rentalStatus}) => {
     return (
         <div className={style.container}>
             <div className={`circle ${style.itemIcon}`}>
-
+                <ion-icon  on-icon name="cube-outline"></ion-icon>
             </div>
             <div className={style.textBox}>
                 <p className={style.studentCouncil}>{studentCouncil}</p>

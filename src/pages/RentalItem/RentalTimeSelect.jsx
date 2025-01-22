@@ -88,7 +88,7 @@ const RentalTimeSelect = () => {
                 onBackClick={() => window.history.back()}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
-
+                    <ion-icon  on-icon name="cube-outline"></ion-icon>
                 </div>
                 <div className={style.itemNameBox}>
                     <p className={style.name}>{itemInfo.name}</p>

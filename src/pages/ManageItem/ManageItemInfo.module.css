@@ -16,6 +16,11 @@
     margin-right: 20px;
 }
 
+.itemImage ion-icon {
+    font-size: 60px;
+    color: #cacaca; 
+}
+
 .itemBox {
     width: 100%;
     display: flex;

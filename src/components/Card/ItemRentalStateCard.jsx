@@ -13,7 +13,7 @@ const ItemRentalStateCard = ({name, rentalStatus, item, expirationDate, onClick,
             </div>
             <div className={style.bodyBox}>
                 <div className={`circle ${style.itemIcon}`}>
-
+                    <ion-icon  on-icon name="cube-outline"></ion-icon>
                 </div>
                 <div className={style.textBox}>
                     <p className={style.itemName}>{item}</p>
