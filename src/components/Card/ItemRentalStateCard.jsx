@@ -2,6 +2,7 @@ import style from './ItemRentalStateCard.module.css';
 import Badge from '../Badge/RentalStatusBadge';
 import PropTypes from 'prop-types';
 import RENTAL_STATUS from '../../constants/rentalStatus';
+import ImageBox from '../ImageBox/ImageBox';
 
 const ItemRentalStateCard = ({name, rentalStatus, item, expirationDate, onClick, isSelected}) => {
     const statusInfo = RENTAL_STATUS[rentalStatus];
@@ -13,7 +14,7 @@ const ItemRentalStateCard = ({name, rentalStatus, item, expirationDate, onClick,
             </div>
             <div className={style.bodyBox}>
                 <div className={`circle ${style.itemIcon}`}>
-
+                    <ImageBox item={item}/>
                 </div>
                 <div className={style.textBox}>
                     <p className={style.itemName}>{item}</p>

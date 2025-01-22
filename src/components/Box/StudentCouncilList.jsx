@@ -5,7 +5,7 @@ const StudentCouncilList = ({name, address, onClick}) => {
     return(
         <div className={style.container}>
             <div className={`circle ${style.studentCouncilImage}`}>
-
+                <ion-icon name="storefront-outline"></ion-icon>
             </div>
             <div className={style.studentCouncilInfo}>
                 <p className={style.name}>{name}</p>

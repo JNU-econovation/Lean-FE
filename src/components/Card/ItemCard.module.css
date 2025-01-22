@@ -7,6 +7,12 @@
     height: 80px;
     background-color: var(--card-background-gray);
     margin-right: 10px;
+    overflow: hidden; 
+}
+
+.itemImage ion-icon {
+    font-size: 50px;
+    color: #cacaca; 
 }
 
 .itemNameBox {

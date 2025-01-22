@@ -4,6 +4,7 @@ import Button from '../../components/Button/Button';
 import { useLocation, useNavigate } from 'react-router-dom';
 import apiClient from '../../services/apiClient';
 import { useState, useEffect } from 'react';
+import ImageBox from '../../components/ImageBox/ImageBox';
 
 const ManageItemInfo = () => {
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ const ManageItemInfo = () => {
             <Navbar title="물품 정보 보기" shadow={true} home={true} onBackClick={() => navigate('/manage/item')}/>
             <div className={style.itemBox}>
                 <div className={`${style.itemImage} circle`}>
-
+                    <ImageBox item={itemName}/>
                 </div>
                 <div className={style.itemNameBox}>
                     <p className={style.name}>{itemName}</p>
