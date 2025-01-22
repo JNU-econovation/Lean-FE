@@ -33,7 +33,7 @@ const ReservationInfoDetail = () => {
 
     return (
         <div className={style.container}>
-            <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} shadow={true} isStudentCouncil={true}/>
+            <Navbar title="세부 정보 확인" onBackClick={() => window.history.back()} home={true} shadow={true}/>
             <ItemInfoBox
                 studentCouncil = {rentalInfo.studentCouncilName}
                 item = {rentalInfo.itemName}

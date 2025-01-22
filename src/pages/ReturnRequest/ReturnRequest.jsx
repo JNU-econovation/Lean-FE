@@ -1,13 +1,13 @@
 import style from './ReturnRequest.module.css';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Navtab from '../../components/Navtab/Navtab';
 import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
 import Button from '../../components/Button/Button';
-import { USER_ID } from '../../constants/userId';
 import apiClient from '../../services/apiClient';
 import { formatDDay } from '../../hooks/dateFormatChange';
+import { UserContext } from '../../hooks/userContext';
 
 const ReturnRequest = () => {
     const [selectedCards, setSelectedCards] = useState([]);
@@ -16,12 +16,13 @@ const ReturnRequest = () => {
     const [selectedTab, setSelectedTab] = useState('전체');
     const navigate = useNavigate();
     const tabs = ['전체', '만료', '대여중'];
+    const currentUser = useContext(UserContext);
         
         // 데이터 가져오기
         useEffect(() => {
             const fetchRentalList = async () => {
                 try {
-                    const response = await apiClient.get(`/api/v1/rentals/${USER_ID.USER}`);
+                    const response = await apiClient.get(`/api/v1/rentals/${currentUser.user_id}`);
                     const filteredData = response.data.filter(
                         (rental) => rental.rental_status === '만료' || rental.rental_status === '대여중'
                     );
@@ -32,7 +33,7 @@ const ReturnRequest = () => {
             };
     
             fetchRentalList();
-        }, []);
+        }, [currentUser.user_id]);
 
         // Status 처리 
         const handleExpirationDate = (status, expiration) => {

@@ -4,12 +4,12 @@ import ItemCard from '../../components/Card/ItemCard';
 import ItemFab from '../../components/Fab/ItemFab';
 import { useNavigate } from 'react-router-dom';
 import apiClient from '../../services/apiClient';
-import { USER_ID } from '../../constants/userId';
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useContext} from 'react';
+import { UserContext } from '../../hooks/userContext';
 
 const ManageItem = () => {
     const navigate = useNavigate();
-
+    const currentUser = useContext(UserContext);
     // 상태 정의
     const [studentCouncilInfo, setStudentCouncilInfo] = useState({
         studentCouncilName: '',
@@ -23,7 +23,7 @@ const ManageItem = () => {
         const fetchStudentCouncilInfo = async () => {
             try {
                 // UserId로 요청 보내기
-                const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.ADMIN}`);
+                const userResponse = await apiClient.get(`/api/v1/users/${currentUser.user_id}`);
                 const {studentCouncilId} = userResponse.data;
 
                 // studentCouncilId로 요청
@@ -43,11 +43,11 @@ const ManageItem = () => {
         };
 
         fetchStudentCouncilInfo();
-    }, []);
+    }, [currentUser.user_id]);
 
     return (
         <div className={`pageContainer ${style.container}`}>
-            <Navbar title="관리 물품 선택" onBackClick={() => navigate('/admin/main')} shadow={true}/>
+            <Navbar title="관리 물품 선택" onBackClick={() => navigate('/main')} shadow={true}/>
             <div className={style.studentCouncilInfoBox}>
                 <p className={style.name}>{studentCouncilInfo.collegeName} {studentCouncilInfo.studentCouncilName}</p>
                 <p className={style.address}>{studentCouncilInfo.studentCouncilAddress}</p>

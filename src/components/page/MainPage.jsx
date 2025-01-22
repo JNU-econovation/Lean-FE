@@ -24,14 +24,12 @@ const MainPage = ({userId}) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // 사용자 정보 API 호출
         const response = await apiClient.get(`api/v1/users/${userId}`);
         const { name, isStudentCouncil, studentCouncilId } = response.data;
 
         setUserName(name);
         setIsStudentCouncil(isStudentCouncil);
 
-        // 학생회 여부에 따라 대기중/처리중 요청 카운트
         if (isStudentCouncil) {
           await fetchRentalRequests(studentCouncilId);
         } else {
@@ -91,6 +89,12 @@ const MainPage = ({userId}) => {
     fetchUserData();
   }, [userId, rentalStatus, expirationDate]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    navigate('/signin');
+  };
+
   const cardBackgroundColor = (() => {
     switch (rentalStatus) {
       case "expired":
@@ -122,7 +126,7 @@ const MainPage = ({userId}) => {
       {/* 프로필 카드 */}
       <div className={style.profileCard}>
         <div className={style.profileCardBox}>
-          <div className={`circle ${style.profileImage}`}>
+          <div className={`circle ${style.profileImage}`} onClick={handleLogout} style={{cursor: 'pointer'}}>
             <ion-icon name="person"></ion-icon>
           </div>
           <span>{userName + '님'}</span>
@@ -224,7 +228,7 @@ const MainPage = ({userId}) => {
 };
 
 MainPage.propTypes = {
-  userId: PropTypes.number.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 export default MainPage;

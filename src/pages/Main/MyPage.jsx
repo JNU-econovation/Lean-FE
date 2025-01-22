@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import style from "./MyPage.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import apiClient from "../../services/apiClient";
-import { USER_ID } from '../../constants/userId';
 import { formatDate } from "../../hooks/dateFormatChange";
-
+import { UserContext } from "../../hooks/userContext";
 // 전화번호 포맷 함수
 const formatPhoneNumber = (phoneNumber) => {
-    return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
-  };
+  return phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+};
 
 const MyPage = () => {
   const [userInfo, setUserInfo] = useState({
@@ -17,13 +16,14 @@ const MyPage = () => {
     phoneNumber: "",
   });
   const [rentalList, setRentalList] = useState([]); // 대여 목록
-
+  const currentUser = useContext(UserContext);
+  
   // 사용자 정보 및 대여 정보 가져오기
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         // 첫 번째 API 호출: 사용자 정보 가져오기
-        const userResponse = await apiClient.get(`/api/v1/users/${USER_ID.USER}`);
+        const userResponse = await apiClient.get(`/api/v1/users/${currentUser.user_id}`);
         const { name, phoneNumber, department } = userResponse.data;
         setUserInfo({
             name,
@@ -33,7 +33,7 @@ const MyPage = () => {
 
         // 두 번째 API 호출: 대여 목록 가져오기
         const rentalResponse = await apiClient.get(
-          `/api/v1/rentals/${USER_ID.USER}`
+          `/api/v1/rentals/${currentUser.user_id}`
         );
         const filteredRentalList = [];
 
@@ -61,7 +61,7 @@ const MyPage = () => {
     };
 
     fetchUserData();
-  }, []);
+  }, [currentUser.user_id]);
 
   return (
     <div className={`pageContainer ${style.container}`}>

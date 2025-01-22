@@ -3,22 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Navtab from '../../components/Navtab/Navtab';
 import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import apiClient from '../../services/apiClient';
 import RENTAL_STATUS from '../../constants/rentalStatus';
-import { USER_ID } from '../../constants/userId';
 import { formatDDay } from '../../hooks/dateFormatChange';
+import { UserContext } from '../../hooks/userContext';
 
 const ReservationInfo = () => {
     const navigate = useNavigate();
     const tabs = ['전체',...Object.values(RENTAL_STATUS).map(status => status.label)];
     const [rentalList, setRentalList] = useState([]);
     const [selectedTab, setSelectedTab] = useState('전체')
+    const currentUser = useContext(UserContext);
 
     useEffect(() => {
         const fetchRentalData = async () => {
             try {
-                const response = await apiClient.get(`api/v1/users/${USER_ID.ADMIN}`);
+                const response = await apiClient.get(`api/v1/users/${currentUser.user_id}`);
                 const { studentCouncilId } = response.data;
                 const rentalResponse = await apiClient.get(`/api/v1/rentals/student_council/${studentCouncilId}`);
                 setRentalList(rentalResponse.data);

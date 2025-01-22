@@ -1,17 +1,18 @@
 import '../../styles/Style.css'
 import style from './RentalInfo.module.css'
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import Navtab from '../../components/Navtab/Navtab';
 import ItemRentalStateCard from '../../components/Card/ItemRentalStateCard';
 import apiClient from '../../services/apiClient';
-import {USER_ID} from "../../constants/userId";
 import RENTAL_STATUS from '../../constants/rentalStatus';
 import { formatDDay } from '../../hooks/dateFormatChange';
+import { UserContext } from '../../hooks/userContext';
 
 const RentalInfo = () => {
     const navigate = useNavigate();
+    const currentUser = useContext(UserContext);
     const tabs = ['전체',...Object.values(RENTAL_STATUS).map(status => status.label)];
     const [rentalList, setRentalList] = useState([]);
     const [selectedTab, setSelectedTab] = useState('전체')
@@ -19,7 +20,7 @@ const RentalInfo = () => {
     useEffect(() => {
         const fetchRentalData = async () => {
             try {
-                const rentalResponse = await apiClient.get(`/api/v1/rentals/${USER_ID.USER}`);
+                const rentalResponse = await apiClient.get(`/api/v1/rentals/${currentUser.user_id}`);
                 setRentalList(rentalResponse.data);
                 console.log(rentalResponse.data)
             } catch (error) {
@@ -28,7 +29,7 @@ const RentalInfo = () => {
         };
         
         fetchRentalData();
-        }, []);
+        }, [currentUser.user_id]);
 
     const handleExpirationDate = (status, expiration) => {
         switch(status) {

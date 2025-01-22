@@ -2,10 +2,10 @@ import Navbar from '../../components/Navbar/Navbar';
 import CustomDatePicker from '../../components/DatePicker/CustomDatePicker';
 import style from './RentalTimeSelect.module.css'
 import Button from '../../components/Button/Button';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useContext } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import apiClient from '../../services/apiClient';
-import { USER_ID } from '../../constants/userId';
+import { UserContext } from '../../hooks/userContext';
 
 const RentalTimeSelect = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -14,6 +14,7 @@ const RentalTimeSelect = () => {
     const navigate = useNavigate();
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [searchParams] = useSearchParams();
+    const currentUser = useContext(UserContext);
 
     useEffect(() => {
         const itemId = searchParams.get('id');
@@ -45,7 +46,7 @@ const RentalTimeSelect = () => {
     const handleRental = async () => {
         if (!isButtonDisabled) {
             const itemId = searchParams.get('id');
-            const userId = USER_ID.USER;
+            const userId = currentUser.user_id;
             console.log(userId);
             console.log(itemId);
     
