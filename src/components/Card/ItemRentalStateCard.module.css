@@ -28,6 +28,7 @@
     background-color: #d9d9d9;
     width: 80px;
     height: 80px;
+    overflow: hidden; 
 }
 
 .itemIcon ion-icon {

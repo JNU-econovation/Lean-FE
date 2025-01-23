@@ -23,13 +23,13 @@
 
 .name {
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 700;
     margin-bottom: 5px;
 }
 
 .address {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--sub-text-gray);
     margin-top: 5px;
 }
