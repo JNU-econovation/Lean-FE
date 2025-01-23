@@ -4,34 +4,59 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale";
 import CustomInput from "./CustomInput";
 import style from "./CustomDatePicker.module.css";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-const CustomDatePicker = ({isDate, selected, onDateChange}) => {
+const CustomDatePicker = ({ isDate, selected, onDateChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   
-  if(isDate){
+  const filterDate = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const targetDate = new Date(date);
+    targetDate.setHours(0, 0, 0, 0);
+    return targetDate >= today; 
+  };
+
+  const dayClassName = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const targetDate = new Date(date);
+    targetDate.setHours(0, 0, 0, 0);
+
+    if (targetDate < today) {
+      return style.disabledDay;
+    }
+
+    return date.getDay() === 0 || date.getDay() === 6
+      ? style.weekendDay
+      : style.weekdayDay;
+  };
+
+
+  if (isDate) {
     return (
       <div className={style.datePickerContainer}>
         <DatePicker
           selected={selected}
           onChange={onDateChange}
-          customInput={<CustomInput isDate={isDate} isOpen={isOpen}/>}
+          customInput={<CustomInput isDate={isDate} isOpen={isOpen} />}
           calendarClassName={style.customCalendar}
-          dayClassName={date => (date.getDay() === 0 || date.getDay() === 6 ? style.weekendDay : style.weekdayDay)}
-          onCalendarClose={()=>setIsOpen(false)}
-          onCalendarOpen={()=>setIsOpen(true)}
+          dayClassName={dayClassName}
+          onCalendarClose={() => setIsOpen(false)}
+          onCalendarOpen={() => setIsOpen(true)}
           locale={ko}
-          dateFormat="yy년 MM월 dd일(E)" 
+          dateFormat="yy년 MM월 dd일(E)"
+          filterDate={filterDate}
+          onClickOutside={() => setIsOpen(false)}
         />
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <DatePicker
         selected={selected}
         onChange={onDateChange}
-        customInput={<CustomInput isDate={isDate} isOpen={isOpen}/>}
+        customInput={<CustomInput isDate={isDate} isOpen={isOpen} />}
         calendarClassName={style.customCalendar}
         showTimeSelect
         showTimeSelectOnly
@@ -39,19 +64,21 @@ const CustomDatePicker = ({isDate, selected, onDateChange}) => {
         timeCaption="Time"
         dateFormat="HH:mm"
         showTimeCaption={false}
-        onCalendarClose={()=>setIsOpen(false)}
-        onCalendarOpen={()=>setIsOpen(true)}
+        onCalendarClose={() => setIsOpen(false)}
+        onCalendarOpen={() => setIsOpen(true)}
         locale={ko}
+        minTime={new Date().setHours(12, 0, 0, 0)}
+        maxTime={new Date().setHours(18, 0, 0, 0)}
+        onClickOutside={() => setIsOpen(false)}
       />
     );
   }
-  
 };
 
 CustomDatePicker.propTypes = {
   isDate: PropTypes.bool,
   selected: PropTypes.instanceOf(Date),
   onDateChange: PropTypes.func,
-}
+};
 
 export default CustomDatePicker;
