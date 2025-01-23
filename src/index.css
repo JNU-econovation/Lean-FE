@@ -68,12 +68,15 @@ body {
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
+  font-family: "Noto Sans KR", serif;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+
 
 #root {
   max-width: 800px;
